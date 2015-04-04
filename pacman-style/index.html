@@ -1,10 +1,88 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Oppa PacMan Style "Hey hey hey hey hey"</title>
+    <script type="text/javascript" src="phaser.min.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
-    <script type="javascript/text" src="gamemap.js"></script>
+
+<script type="text/javascript">
+
+    var game = new Phaser.Game(1024, 768, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+
+    function preload() {
+
+        game.load.image('map', 'assets/background.jpg');
+        game.load.image('keith', 'assets/keith.png');
+
+    }
+
+    //Add playable objects
+    var player;
+    var ghost0;
+    var ghost1;
+    var ghost2;
+    var ghost3;
+
+    function create() {
+        cursors = game.input.keyboard.createCursorKeys();
+        game.add.sprite(0, 0, 'map');
+        player = game.add.sprite(64, game.world.height - 150, 'keith');
+
+        //  We need to enable physics on the player
+        game.physics.arcade.enable(player);
+    }
+
+    function update() {//  Reset the players velocity (movement)
+
+        player.body.velocity.x = 0;
+        player.body.velocity.y = 0;
+
+        if (cursors.left.isDown)
+        {
+            //  Move to the left
+            player.body.velocity.x = -150;
+
+            player.animations.play('left');
+        }
+        else if (cursors.right.isDown)
+        {
+            //  Move to the right
+            player.body.velocity.x = 150;
+
+            player.animations.play('right');
+        }
+        else if (cursors.up.isDown)
+        {
+            //  Move to the right
+            player.body.velocity.y = -150;
+
+            player.animations.play('up');
+        }
+        else if (cursors.down.isDown)
+        {
+            //  Move to the right
+            player.body.velocity.y = 150;
+
+            player.animations.play('down');
+        }
+        else
+        {
+            //  Stand still
+            player.animations.stop();
+
+            player.frame = 4;
+        }
+
+    }
+
+</script>
+
 </body>
 </html>
