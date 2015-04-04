@@ -20,26 +20,48 @@
 
         game.load.image('map', 'assets/background.jpg');
         game.load.image('keith', 'assets/keith.png');
+        game.load.image('box', 'assets/box.png');
 
     }
 
     //Add playable objects
     var player;
+    var platforms;
+    var box;
+    var cursors;
     var ghost0;
     var ghost1;
     var ghost2;
     var ghost3;
 
     function create() {
+
+
+        game.physics.startSystem(Phaser.Physics.ARCADE);
+
+
+        //  The platforms group contains the ground and the 2 ledges we can jump on
+        platforms = game.add.group();
+
+        //  We will enable physics for any object that is created in this group
+        platforms.enableBody = true;
+
         cursors = game.input.keyboard.createCursorKeys();
         game.add.sprite(0, 0, 'map');
         player = game.add.sprite(64, game.world.height - 150, 'keith');
 
+        game.add.sprite(64, 300, 'box');
+        box = platforms.create(400, 400, 'box');
+        box.body.immovable = true;
+
         //  We need to enable physics on the player
         game.physics.arcade.enable(player);
+        player.body.collideWorldBounds = true;
     }
 
     function update() {//  Reset the players velocity (movement)
+
+        game.physics.arcade.collide(player, platforms);
 
         player.body.velocity.x = 0;
         player.body.velocity.y = 0;
