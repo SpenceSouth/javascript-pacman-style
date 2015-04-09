@@ -37,7 +37,7 @@ keystore.txt
 
 ## Directory-based project format
 # Might switch back to ignoring the entire /.idea/ if the current setup doesn't work. - Dan. 2014-07-01
-.idea/
+/.idea/
 # if you remove the above rule, at least ignore user-specific stuff:
 .idea/workspace.xml
 .idea/tasks.xml
