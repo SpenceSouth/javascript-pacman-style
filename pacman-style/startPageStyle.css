@@ -7,6 +7,7 @@ h1{
 /*background color*/
 body{
     background-color: #36454f;
+    font-family: "Play", Georgia, Serif;
 }
 
 ul{
@@ -24,7 +25,7 @@ img{//change the style of the images
 #selectPlayer{
     color: white;
     text-align: center;
-    font-family: "Alegreya", Georgia, Serif;
+
 }
 
 li{
@@ -81,8 +82,8 @@ li{
 }
 
 a.startButton {
-    color: #3366CC;
-    border-color: #8A1300;
+    color: #FF3535;
+    border-color: #FF3535;
 }
 
 a.startButton:hover {
@@ -90,8 +91,8 @@ a.startButton:hover {
 }
 
 a.instructionButton {
-    color: #DB4DDB;
-    border-color: #751975;
+    color: yellow;
+    border-color: yellow;
 }
 
 a.instructionButton:hover {
@@ -100,7 +101,7 @@ a.instructionButton:hover {
 
 a.highScoreButton {
     color: #1AD96D;
-    border-color: #00D55C;
+    border-color: #1AD96D;
 }
 
 a.highScoreButton:hover {

@@ -1,21 +1,36 @@
 body{
-    background-color: #9E9E9E;
+    background-color: #36454f;
+    text-align: center;
+    font-family: "Play", Georgia, Serif;
 }
 
 h1{
     color: yellow;
-    font-family: "Alegreya", Georgia, Serif;
+    text-align: center;
+    border-style: dashed;
 }
 
 h2{
-    color: red;
+    color: white;
+    text-align: center;
 }
 
-h3{
-    color: blue;
+#instructionText{
+    color: #FF3535;
+    text-align: center;
+    list-style: none;
 }
+
 
 a{
-    color: white;
+    color: #1AD96D;
+    text-align: center;
 }
+
+#keyPic{
+   height: 50px;
+   width: 70px;
+}
+
+
 

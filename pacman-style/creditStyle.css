@@ -1,16 +1,21 @@
 body{
     background-color: #36454F;
-}
-
-h1{
-    color: #1AD96D;
     font-family: "Alegreya", Georgia, Serif;
 }
 
-h2{
-    color: white;
+h1{
+    color: yellow;
+    text-align: center;
+    border-style: dashed;
 }
 
+h2{
+    color: #FF3535;
+    text-align: center;
+}
+
+
 a{
-    color: white;
+    color: #1AD96D;
+    text-align: center;
 }
