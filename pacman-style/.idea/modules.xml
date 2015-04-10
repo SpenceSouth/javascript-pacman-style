@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/pacman-style.iml" filepath="$PROJECT_DIR$/.idea/pacman-style.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/pacman-style.iml" filepath="$PROJECT_DIR$/.idea/pacman-style.iml" />
     </modules>
   </component>
 </project>
