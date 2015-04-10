@@ -8,39 +8,36 @@
 </head>
 <body>
 
-<script type="text/javascript">
-    window.addEventListener("load", start, false);
+    <script type="text/javascript">
+        window.addEventListener("load", start, false);
 
-    function start() {
-        var startButton = document.getElementById("sb");
+        function start() {
+            var startButton = document.getElementById("sb");
 
-        startButton.addEventListener("click", function () {
+            startButton.addEventListener("click", function () {
 
+                document.getElementById("homeList").innerHTML = "<p id='selectPlayer'>Who would you like to play as?<ul id='pics'><li><a href='#' id='keith'><img src='gamePictures/KeithEdited.png' alt='keith'></a></li><li><a href='#' id='megan'><img src='gamePictures/meganEdited.png' alt='megan'></a></li><li><a href='#' id='spence'><img src='gamePictures/spenceEdited.png' alt='spence'></a></li><li><a href='#' id='brittany'><img src='gamePictures/brittanyv1.png' alt='brit'></a></li><li><a href='#' id='marcus'><img src='gamePictures/marcusEdited.png' alt='marcus'></a></li></p>";
 
-            document.getElementById("homeList").innerHTML = "<p id='selectPlayer'>Who would you like to play as?<ul id='pics'><li><a href='#' id='keith'><img src='gamePictures/KeithEdited.png' alt='keith'></a></li><li><a href='#' id='megan'><img src='gamePictures/meganEdited.png' alt='megan'></a></li><li><a href='#' id='spence'><img src='gamePictures/spenceEdited.png' alt='spence'></a></li><li><a href='#' id='brittany'><img src='gamePictures/brittanyv1.png' alt='brit'></a></li><li><a href='#' id='marcus'><img src='gamePictures/marcusEdited.png' alt='marcus'></a></li></p>";
+            });
+        }
+    </script>
 
-        });
-    }
+    <h1><img src="gamePictures/logo.png" alt="GOOSEPOCAYLPSE"></h1>
 
+    <ul id="homeList">
+        <li><a href="#" id="sb" class="startButton"><span class="round">Start Game</span></a>
+        </li>
 
-</script>
+        <li><a href="instructionPage.html" class="instructionButton"><span class="round">How to play</span></a></li>
 
-<h1><img src="gamePictures/logo.png" alt="GOOSEPOCAYLPSE"></h1>
+        <li><a href="highScorePage.html" class="highScoreButton"><span class="round">High Scores</span></a></li>
 
-<ul id="homeList">
-    <li><a href="#" id="sb" class="startButton"><span class="round">Start Game</span></a>
-    </li>
+        <li><a href="creditsPage.html" class="creditsButton"><span class="round">Props to us...</span></a></li>
+    </ul>
 
-    <li><a href="instructionPage.html" class="instructionButton"><span class="round">How to play</span></a></li>
+    <br><br>
 
-    <li><a href="highScorePage.html" class="highScoreButton"><span class="round">High Scores</span></a></li>
-
-    <li><a href="creditsPage.html" class="creditsButton"><span class="round">Props to us...</span></a></li>
-</ul>
-
-<br><br>
-
-<div id="avatarArea"></div>
+    <div id="avatarArea"></div>
 
 
 </body>

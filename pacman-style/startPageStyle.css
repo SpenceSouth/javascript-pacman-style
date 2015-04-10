@@ -1,22 +1,13 @@
-/*background color*/
 body{
     background-color: #36454f;
     font-family: "Play", Georgia, Serif;
 }
 
-/*heading*/
 h1{
     color: #CC0000;
     text-align: center;
 }
 
-ul{
-    margin: 30px auto;
-    text-align: center;
-}
-
-img{//change the style of the images
-}
 
 #pics{
     list-style: none;
@@ -25,7 +16,11 @@ img{//change the style of the images
 #selectPlayer{
     color: white;
     text-align: center;
+}
 
+ul{
+    margin: 30px auto;
+    text-align: center;
 }
 
 li{
@@ -48,18 +43,12 @@ li{
     text-decoration: none;
     text-align: center;
     font-size: 25px;
-    /*text-shadow: 0 1px 0 rgba(255,255,255,.7);*/
     letter-spacing: -.065em;
-    font-family: "Hammersmith One", sans-serif;
-    -webkit-transition: all .25s ease-in-out;
-    -o-transition: all .25s ease-in-out;
-    -moz-transition: all .25s ease-in-out;
-    transition: all .25s ease-in-out;
-    box-shadow: 2px 2px 7px rgba(0,0,0,.2);
     border-radius: 300px;
     z-index: 1;
     border-width: 4px;
     border-style: solid;
+    margin: 2.5% 20%;
 }
 
 .round:hover {
@@ -69,16 +58,8 @@ li{
     top: -15%;
     font-size: 33px;
     padding-top: 38px;
-    -webkit-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
-    -o-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
-    -moz-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
-    box-shadow: 5px 5px 10px rgba(0,0,0,.3);
     z-index: 2;
     border-size: 10px;
-    -webkit-transform: rotate(-360deg);
-    -moz-transform: rotate(-360deg);
-    -o-transform: rotate(-360deg);
-    transform: rotate(-360deg);
 }
 
 a.startButton {
@@ -86,17 +67,9 @@ a.startButton {
     border-color: #FF3535;
 }
 
-a.startButton:hover {
-    color: #D8CFD8;
-}
-
 a.instructionButton {
     color: yellow;
     border-color: yellow;
-}
-
-a.instructionButton:hover {
-    color: #D8CFD8;
 }
 
 a.highScoreButton {
@@ -104,16 +77,10 @@ a.highScoreButton {
     border-color: #1AD96D;
 }
 
-a.highScoreButton:hover {
-    color: #D8CFD8;
-}
 
 a.creditsButton {
     color: #FFFFFF;
-    border-color: #00D55C;
-}
-a.creditsButton:hover {
-    color: #D8CFD8;
+    border-color: #FFFFFF;
 }
 
 .round span.round {
@@ -122,23 +89,9 @@ a.creditsButton:hover {
     transition: all .5s ease-in-out;
     font-size: 1px;
     border: none;
-    padding: 40% 20% 0 20%;
+    padding: 50% 30% 30% 30%;
 }
 
 .round span:hover {
-    opacity: 100%;
-    font-size: 16px;
-    text-shadow: 0 1px 1px rgba(0,0,0,.5);
-}
-
-.instructionsButton span {
-    background: FFFFFF;
-}
-
-.startButton span {
-    background-color: FFFFFF;
-}
-
-.highScoreButton span {
-    background: FFFFFF;
+    font-size: 20px;
 }
