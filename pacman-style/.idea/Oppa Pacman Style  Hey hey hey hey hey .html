@@ -1,16 +1,16 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://localhost:60192/pacman-style/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
     <title>Oppa Pacman Style "Hey hey hey hey hey"</title>
-    <script type="text/javascript" src="phaser.min.js"></script>
+    <script type="text/javascript" src="./Oppa Pacman Style  Hey hey hey hey hey _files/phaser.min.js"></script>
     <style type="text/css">
         body {
             margin: 0;
         }
     </style>
 </head>
-<body>
+<body style="overflow: hidden;">
 
 <script type="text/javascript">
 
@@ -22,16 +22,10 @@
         game.load.image('box', 'assets/block.png');
         game.load.image('star', 'assets/box.png');
         game.load.image('keith', 'assets/keith.png');
-        game.load.image('goose0', 'assets/goose0.png');
-        game.load.image('goose1', 'assets/goose1.png');
-        game.load.image('goose2', 'assets/goose2.png');
 
     }
 
     var player;
-    var ghost0;
-    var ghost1;
-    var ghost2;
     var blocks;
     var cursors;
 
@@ -58,27 +52,13 @@
 
         // The player and its settings
         player = game.add.sprite(64, 64, 'keith');
-        player.scale.setTo(.75,.75);
-
-        //Add in the hosts
-        ghost0 = game.add.sprite(10*32, 10*32, 'goose0');
-        ghost1 = game.add.sprite(11*32, 10*32, 'goose1');
-        ghost2 = game.add.sprite(12*32, 10*32, 'goose2');
-        ghost0.scale.setTo(.5,.5);
-        ghost1.scale.setTo(.5,.5);
-        ghost2.scale.setTo(.5,.5);
+        player.scale.setTo(.5,.5);
 
         //  We need to enable physics on the player
         game.physics.arcade.enable(player);
-        game.physics.arcade.enable(ghost0);
-        game.physics.arcade.enable(ghost1);
-        game.physics.arcade.enable(ghost2);
 
         //  Player physics properties. Give the little guy a slight bounce.
         player.body.collideWorldBounds = true;
-        ghost0.body.collideWorldBounds = true;
-        ghost1.body.collideWorldBounds = true;
-        ghost2.body.collideWorldBounds = true;
 
         //  Our two animations, walking left and right.
         player.animations.add('left', [0, 1, 2, 3], 10, true);
@@ -480,6 +460,22 @@
         placeBox(20, 10);
         placeBox(20, 11);
 
+        //  Finally some stars to collect
+//        stars = game.add.group();
+//
+//        //  We will enable physics for any star that is created in this group
+//        stars.enableBody = true;
+//
+//        //  Here we'll create 12 of them evenly spaced apart
+//        for (var i = 0; i < 12; i++)
+//        {
+//            //  Create a star inside of the 'stars' group
+//            var star = stars.create(i * 70, 0, 'star');
+//
+//            //  This just gives each star a slightly random bounce value
+//            star.body.bounce.y = 0.7 + Math.random() * 0.2;
+//        }
+
         //  The score
         scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
 
@@ -492,21 +488,20 @@
 
         //  Collide the player and the stars with the blocks
         game.physics.arcade.collide(player, blocks);
-        game.physics.arcade.collide(player, ghost0, gameOver, null, this);
-        game.physics.arcade.collide(player, ghost1, gameOver, null, this);
-        game.physics.arcade.collide(player, ghost2, gameOver, null, this);
-        game.physics.arcade.collide(ghost0, blocks);
-        game.physics.arcade.collide(ghost1, blocks);
-        game.physics.arcade.collide(ghost2, blocks);
+//        game.physics.arcade.collide(stars, blocks);
 
-        score += 1;
-        scoreText.text = 'Score: ' + score;
+        //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
+//        game.physics.arcade.overlap(player, stars, collectStar, null, this);
+
+        //  Reset the players velocity (movement)
+        /*player.body.velocity.x = 0;
+        player.body.velocity.y = 0;*/
 
         if (cursors.left.isDown)
         {
             //  Move to the left
             player.body.velocity.y = 0;
-            player.body.velocity.x = -100;
+            player.body.velocity.x = -150;
 
 //            player.animations.play('left');
         }
@@ -514,7 +509,7 @@
         {
             //  Move to the right
             player.body.velocity.y = 0;
-            player.body.velocity.x = 100;
+            player.body.velocity.x = 150;
 
 //            player.animations.play('right');
         }
@@ -522,7 +517,7 @@
         {
             //  Move to the right
             player.body.velocity.x = 0;
-            player.body.velocity.y = -100;
+            player.body.velocity.y = -150;
 
 //            player.animations.play('right');
         }
@@ -530,7 +525,7 @@
         {
             //  Move to the right
             player.body.velocity.x = 0;
-            player.body.velocity.y = 100;
+            player.body.velocity.y = 150;
 
 //            player.animations.play('right');
         }
@@ -549,32 +544,18 @@
         box.body.immovable = true;
     }
 
-    function gameOver(){
-        alert("Game over!");
-    }
+    /*function collectStar (player, star) {
 
-    //TODO: Keith- Implement your search algorithms here.
-    function ghost0Func(playerX, playerY){
+        // Removes the star from the screen
+        star.kill();
 
+        //  Add and update the score
+        score += 10;
+        scoreText.text = 'Score: ' + score;
 
-
-    }
-
-
-    function ghost1Func(playerX, playerY){
-
-
-
-    }
-
-
-    function ghost2Func(playerX, playerY){
-
-
-
-    }
+    }*/
 
 </script>
 
-</body>
-</html>
+
+<canvas width="704" height="704" style="display: block; touch-action: none; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: inherit;"></canvas></body></html>
