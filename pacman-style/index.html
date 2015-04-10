@@ -57,7 +57,7 @@
 //        box.scale.setTo(2, 2);
 
         // The player and its settings
-        player = game.add.sprite(64, 64, 'keith');
+        player = game.add.sprite(32, 32, 'keith');
         player.scale.setTo(.75,.75);
 
         //Add in the hosts
@@ -553,6 +553,7 @@
         box.body.immovable = true;
     }
 
+    //Send to PHP here
     function gameOver(){
         alert("Game over!");
     }
