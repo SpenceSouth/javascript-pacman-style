@@ -1,13 +1,13 @@
-/*heading*/
-h1{
-    color: #CC0000;
-    text-align: center;
-}
-
 /*background color*/
 body{
     background-color: #36454f;
     font-family: "Play", Georgia, Serif;
+}
+
+/*heading*/
+h1{
+    color: #CC0000;
+    text-align: center;
 }
 
 ul{
