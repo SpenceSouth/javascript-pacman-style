@@ -1,5 +1,7 @@
 body{
-    background-color: #36454f;
+    background-image: url("gamePictures/startScreenBackground.png");
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: "Play", Georgia, Serif;
 }
 
