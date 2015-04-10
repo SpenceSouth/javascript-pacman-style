@@ -1,19 +1,20 @@
 body{
     background-color: #36454F;
-    font-family: "Alegreya", Georgia, Serif;
+    font-family: "Play", Georgia, Serif;
 }
 
 h1{
     color: yellow;
     text-align: center;
     border-style: dashed;
+    margin: 2.5% 25%;
 }
 
 h2{
     color: #FF3535;
     text-align: center;
+    margin: 2.5% 25%;
 }
-
 
 a{
     color: #1AD96D;

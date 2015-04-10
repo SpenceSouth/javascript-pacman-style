@@ -8,11 +8,18 @@ h1{
     color: yellow;
     text-align: center;
     border-style: dashed;
+    margin: 2.5% 25%;
 }
 
 h2{
     color: white;
     text-align: center;
+    margin: 2.5% 25%;
+}
+
+h3{
+
+    margin: 2.5% 25%;
 }
 
 #instructionText{
@@ -20,7 +27,6 @@ h2{
     text-align: center;
     list-style: none;
 }
-
 
 a{
     color: #1AD96D;
