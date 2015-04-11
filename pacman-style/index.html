@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -556,25 +556,252 @@
     function gameOver(){
         alert("Game over!");
     }
-
+    var loop = 0;
+    var ghost0NextX = -1;
+    var ghost0NextY = -1;
     //TODO: Keith- Implement your search algorithms here.
-    function ghost0Func(playerX, playerY){
+    function ghost0Func(playerX, playerY) {
 
-        //alert(playerX, " , " + playerY);
+        var myY = Math.ceil(ghost0.x / 32);
+        var myX = Math.ceil(ghost0.y / 32);
+        var targetY = Math.floor(playerX / 32);
+        var targetX = Math.floor(playerY / 32);
+        var move = GBF(myX, myY, targetX, targetY);
+
+
+        if (loop % 30 == 0)
+            alert(move + " " + myX + " " + myY);
+
+        loop++;
+
+        if (move == "up") {
+            if (myX-1 == ghost0NextX && myY == ghost0NextY) {
+
+            }
+            else {
+                ghost0NextX = myX-1;
+                ghost0NextY = myY;
+                ghost0.body.velocity.x = 0;
+                ghost0.body.velocity.y = -90;
+            }
+        }
+        else if (move == "down") {
+            if (myX+1 == ghost0NextX && myY == ghost0NextY) {
+
+            }
+            else {
+                ghost0NextX = myX+1;
+                ghost0NextY = myY;
+                ghost0.body.velocity.x = 0;
+                ghost0.body.velocity.y = 90;
+            }
+        }
+        else if (move == "right") {
+            if (myX == ghost0NextX && myY+1 == ghost0NextY) {
+
+            }
+            else {
+                ghost0NextX = myX;
+                ghost0NextY = myY+1;
+                ghost0.body.velocity.x = 90;
+                ghost0.body.velocity.y = 0;
+            }
+        }
+        else if (move == "left") {
+            if (myX == ghost0NextX && myY-1 == ghost0NextY) {
+
+            }
+            else {
+                ghost0NextX = myX;
+                ghost0NextY = myY-1;
+                ghost0.body.velocity.x = -90;
+                ghost0.body.velocity.y = 0;
+            }
+        }
+        else {
+
+                ghost0.body.velocity.x = 0;
+                ghost0.body.velocity.y = 0;
+
+        }
 
     }
 
 
     function ghost1Func(playerX, playerY){
-
-
+        var myY = Math.floor(ghost1.x / 32);
+        var myX = Math.floor(ghost1.y / 32);
+        var targetY = Math.floor(playerX / 32);
+        var targetX = Math.floor(playerY / 32);
+        //var move = random(myX, myY, targetX, targetY);
 
     }
 
 
     function ghost2Func(playerX, playerY){
+        var myY = Math.floor(ghost2.x / 32);
+        var myX = Math.floor(ghost2.y / 32);
+        var targetY = Math.floor(playerX / 32);
+        var targetX = Math.floor(playerY / 32);
+        //var move = IDS(myX, myY, targetX, targetY);
+    }
 
+    //self implemented boolean array
+    //need to create a 2 dimensional array of booleans
+    //true you can go to that space
+    //false there is an obstacle
+    var map = new Array(
+            [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],//0
+            [false, true, true, true, true, true, true, true, true, true, false, false, true, true, true, true, true, true, true, true, true, false],//1
+            [false, true, false, true, false, false, false, true, false, true, true, true, true, false, true, false, false, false, true, false, true, false],//2
+            [false, true, false, true, true, true, true, true, false, true, false, false, true, false, true, true, true, true, true, false, true, false],//3
+            [false, true, false, false, false, true, false, true, false, true, false, false, true, false, true, false, true, false, false, false, true, false],//4
+            [false, true, true, true, true, true, false, true, false, true, false, false, true, false, true, false, true, true, true, true, true, false],//5
+            [false, true, false, true, false, false, false, true, true, true, true, true, true, true, true, false, false, false, true, false, true, false],//6
+            [false, true, true, true, false, true, true, true, false, false, false, false, false, false, true, true, true, false, true, true, true, false],//7
+            [false, true, false, true, true, true, false, true, true, true, true, true, true, true, true, false, true, true, true, false, true, false],//8
+            [false, true, false, false, true, false, false, true, false, false, true, true, false, false, true, false, false, true, false, false, true, false],//9
+            [false, true, true, true, true, true, true, true, false, true, true, true, true, false, true, true, true, true, true, true, true, false],//10
+            [false, false, false, true, false, false, false, true, false, true, true, true, true, false, true, false, false, false, true, false, false, false],//11
+            [false, true, true, true, true, true, true, true, false, false, false, false, false, false, true, true, true, true, true, true, true, false],//12
+            [false, true, false, false, false, true, false, true, true, true, true, true, true, true, true, false, true, false, false, false, true, false],//13
+            [false, true, false, true, true, true, false, false, false, true, false, false, true, false, false, false, true, true, true, false, true, false],//14
+            [false, true, true, true, false, true, true, true, true, true, false, false, true, true, true, true, true, false, true, true, true, false],//15
+            [false, true, false, false, false, false, true, false, false, true, false, false, true, false, false, true, false, false, false, false, true, false],//16
+            [false, true, false, false, true, true, true, true, false, true, false, false, true, false, true, true, true, true, false, false, true, false],//17
+            [false, true, false, false, true, false, false, true, false, true, true, true, true, false, true, false, false, true, false, false, true, false],//18
+            [false, true, false, false, true, false, false, true, false, true, false, false, true, false, true, false, false, true, false, false, true, false],//19
+            [false, true, true, true, true, true, true, true, true, true, false, false, true, true, true, true, true, true, true, true, true, false],//20
+            [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false] //21
+        );
 
+    //greedy best first search
+    //returns "up", "down", "left", "right", "no"
+    function GBF(myX, myY, targetX, targetY) {
+
+        var optimalPathDistance = map.length * map[0].length;
+        var movementDirection = "No";
+
+        if ((myX - 1) >= 0 && map[myX-1][myY] == true && Math.sqrt(Math.pow(((myX-1) - targetX), 2) + Math.pow((myY - targetY), 2)) < optimalPathDistance) {
+            optimalPathDistance = Math.sqrt(Math.pow(((myX-1) - targetX), 2) + Math.pow((myY - targetY), 2));
+            movementDirection = "up";
+        }
+
+        if ((myX + 1) < map.length && map[myX+1][myY] == true && Math.sqrt(Math.pow(((myX+1) - targetX), 2) + Math.pow((myY - targetY), 2)) < optimalPathDistance) {
+            optimalPathDistance = Math.sqrt(Math.pow(((myX+1) - targetX), 2) + Math.pow((myY - targetY), 2));
+            movementDirection = "down";
+        }
+
+        if ((myY - 1) >= 0 && map[myX][myY-1] == true && Math.sqrt(Math.pow((myX - targetX), 2) + Math.pow(((myY-1) - targetY), 2)) < optimalPathDistance) {
+            optimalPathDistance = Math.sqrt(Math.pow((myX - targetX), 2) + Math.pow(((myY-1) - targetY), 2));
+            movementDirection = "left";
+        }
+
+        if ((myY+1) < map[0].length && map[myX][myY+1] == true && Math.sqrt(Math.pow((myX - targetX), 2) + Math.pow(((myY+1) - targetY), 2)) < optimalPathDistance) {
+            optimalPathDistance = Math.sqrt(Math.pow((myX - targetX), 2) + Math.pow(((myY+1) - targetY), 2));
+            movementDirection = "right";
+        }
+        return movementDirection;
+    }
+
+    //random movement return
+    //returns "up", "down", "left", "right", "no"
+    function random(myX, myY) {
+        var value = Math.random() % 4;
+        if (value == 0) {
+            return "up";
+        }
+        else if (value == 1) {
+            return "down";
+        }
+        else if (value == 2) {
+            return "left";
+        }
+        else {
+            return "right";
+        }
+    }
+
+    //itterative deepening depth first search
+    //returns "up", "down", "left", "right", "no"
+    function IDS(myX, myY, targetX, targetY) {
+        var depth = 0;
+        var direction = "no";
+
+        if (myX == targetX && myY == targetY) {
+            return direction;
+        }
+        else {
+            while (direction == "no") {
+                alert(depth);
+                if (IDSRecursive(myX, myY - 1, targetX, targetY, depth)) {
+                    direction = "up";
+                }
+
+                if (IDSRecursive(myX, myY + 1, targetX, targetY, depth)) {
+                    direction = "down";
+                }
+
+                if (IDSRecursive(myX - 1, myY, targetX, targetY, depth)) {
+                    direction = "left";
+                }
+
+                if (IDSRecursive(myX + 1, myY, targetX, targetY, depth)) {
+                    direction = "right";
+                }
+                depth++;
+                if (depth > (50)) {
+                    break;
+                }
+            }
+            return direction;
+        }
+    }
+
+    //do not call this method IDS will call it for you
+    function IDSRecursive(myX, myY, targetX, targetY, depth) {
+
+        if (depth > 0) {
+            if ((myY - 1) >= 0 && map[myX][myY - 1] != false) { 
+
+                if (IDSRecursive(myX, (myY - 1), targetX, targetY, (depth - 1))) {
+                    return true;
+                }
+            }
+
+            if ((myY + 1) < map[0].length && map[myX][myY + 1] != false) {
+
+                if (IDSRecursive(myX, (myY + 1), targetX, targetY, (depth - 1))) {
+                    return true;
+                }
+            }
+
+            if ((myX - 1) >= 0 && map[myX - 1][myY] != false) {
+                if (IDSRecursive((myX - 1), myY, targetX, targetY, (depth - 1))) {
+                    return true;
+                }
+            }
+
+            if ((myX + 1) < map.length && map[myX + 1][myY] != false) {
+                if (IDSRecursive((myX + 1), myY, targetX, targetY, (depth - 1))) {
+                    return true;
+                }
+            }
+
+            return false;
+
+        }
+        else if (depth == 0) {
+            if (myX == targetX && myY == targetY) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
 
     }
 
