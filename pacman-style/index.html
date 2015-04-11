@@ -627,6 +627,7 @@
                 //if (loop % 100 == 0)
                 //    alert(move + " (" + myX + "," + myY + ")  (" + ghost0.x + "," + ghost0.y + ")" );
 
+
                 //loop++;
 
                 if (move == "up") {
@@ -801,7 +802,7 @@
                 }
                 else {
                     while (direction == "no") {
-                        alert(depth);
+                        //alert(depth);
                         if (IDSRecursive(myX, myY - 1, targetX, targetY, depth)) {
                             direction = "up";
                         }
