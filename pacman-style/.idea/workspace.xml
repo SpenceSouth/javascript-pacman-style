@@ -2,42 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ecc427c-899b-48b3-a3c6-562985a7426c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gamePictures/brittany.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gamePictures/brittanyScroll.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gamePictures/emptySpace.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gamePictures/keithScroll.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gamePictures/marcusScroll.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gamePictures/meganScroll.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gamePictures/spenceScroll.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gamePictures/startScreenBackground.png" />
-      <change type="MOVED" beforePath="C:\Users\Spencer\Documents\javascript-projects\ip-final-project\COP4813-TeamContract.pdf" afterPath="$PROJECT_DIR$/misc/COP4813-TeamContract.pdf" />
-      <change type="MOVED" beforePath="C:\Users\Spencer\Documents\javascript-projects\ip-final-project\COP4813_finalprojguide.pdf" afterPath="$PROJECT_DIR$/misc/COP4813_finalprojguide.pdf" />
-      <change type="MOVED" beforePath="C:\Users\Spencer\Documents\javascript-projects\ip-final-project\GroupContract.pdf" afterPath="$PROJECT_DIR$/misc/GroupContract.pdf" />
-      <change type="MOVED" beforePath="C:\Users\Spencer\Documents\javascript-projects\ip-final-project\GroupProposal.pdf" afterPath="$PROJECT_DIR$/misc/GroupProposal.pdf" />
-      <change type="MOVED" beforePath="C:\Users\Spencer\Documents\javascript-projects\ip-final-project\KeithEdited.png" afterPath="$PROJECT_DIR$/misc/KeithEdited.png" />
-      <change type="MOVED" beforePath="C:\Users\Spencer\Documents\javascript-projects\ip-final-project\README.md" afterPath="$PROJECT_DIR$/misc/README.md" />
-      <change type="MOVED" beforePath="C:\Users\Spencer\Documents\javascript-projects\ip-final-project\brittanyv1.jpg" afterPath="$PROJECT_DIR$/misc/brittanyv1.jpg" />
-      <change type="MOVED" beforePath="C:\Users\Spencer\Documents\javascript-projects\ip-final-project\brittanyv1.png" afterPath="$PROJECT_DIR$/misc/brittanyv1.png" />
-      <change type="MOVED" beforePath="C:\Users\Spencer\Documents\javascript-projects\ip-final-project\creditStyle.css" afterPath="$PROJECT_DIR$/misc/creditStyle.css" />
-      <change type="MOVED" beforePath="C:\Users\Spencer\Documents\javascript-projects\ip-final-project\creditsPage.html" afterPath="$PROJECT_DIR$/misc/creditsPage.html" />
-      <change type="MOVED" beforePath="C:\Users\Spencer\Documents\javascript-projects\ip-final-project\gitCommands.txt" afterPath="$PROJECT_DIR$/misc/gitCommands.txt" />
-      <change type="MOVED" beforePath="C:\Users\Spencer\Documents\javascript-projects\ip-final-project\goosePicLarge.jpg" afterPath="$PROJECT_DIR$/misc/goosePicLarge.jpg" />
-      <change type="MOVED" beforePath="C:\Users\Spencer\Documents\javascript-projects\ip-final-project\highScorePage.html" afterPath="$PROJECT_DIR$/misc/highScorePage.html" />
-      <change type="MOVED" beforePath="C:\Users\Spencer\Documents\javascript-projects\ip-final-project\highScoreStyle.css" afterPath="$PROJECT_DIR$/misc/highScoreStyle.css" />
-      <change type="MOVED" beforePath="C:\Users\Spencer\Documents\javascript-projects\ip-final-project\instructionPage.html" afterPath="$PROJECT_DIR$/misc/instructionPage.html" />
-      <change type="MOVED" beforePath="C:\Users\Spencer\Documents\javascript-projects\ip-final-project\instructionStyle.css" afterPath="$PROJECT_DIR$/misc/instructionStyle.css" />
-      <change type="MOVED" beforePath="C:\Users\Spencer\Documents\javascript-projects\ip-final-project\logo.png" afterPath="$PROJECT_DIR$/misc/logo.png" />
-      <change type="MOVED" beforePath="C:\Users\Spencer\Documents\javascript-projects\ip-final-project\marcusEdited.png" afterPath="$PROJECT_DIR$/misc/marcusEdited.png" />
-      <change type="MOVED" beforePath="C:\Users\Spencer\Documents\javascript-projects\ip-final-project\meganEdited.png" afterPath="$PROJECT_DIR$/misc/meganEdited.png" />
-      <change type="MOVED" beforePath="C:\Users\Spencer\Documents\javascript-projects\ip-final-project\spenceEdited.png" afterPath="$PROJECT_DIR$/misc/spenceEdited.png" />
-      <change type="MOVED" beforePath="C:\Users\Spencer\Documents\javascript-projects\ip-final-project\startPageStyle.css" afterPath="$PROJECT_DIR$/misc/startPageStyle.css" />
-      <change type="MOVED" beforePath="C:\Users\Spencer\Documents\javascript-projects\ip-final-project\startScreen.html" afterPath="$PROJECT_DIR$/misc/startScreen.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gitignore" afterPath="$PROJECT_DIR$/../.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ScoresCall.php" afterPath="$PROJECT_DIR$/ScoresCall.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/User_Name.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/User_Name.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/instructionPage.html" afterPath="$PROJECT_DIR$/instructionPage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startPageStyle.css" afterPath="$PROJECT_DIR$/startPageStyle.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/startScreen.html" afterPath="$PROJECT_DIR$/startScreen.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pacman-style.iws" />
@@ -65,9 +30,11 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.608545" vertical-offset="0" max-vertical-offset="11730">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.31408775" vertical-offset="0" max-vertical-offset="14518">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding>
+                <element signature="e#11698#13567#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -76,6 +43,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/index.html" />
+      </list>
+    </option>
   </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
@@ -109,6 +83,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -129,17 +104,68 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="recentsLimit" value="5" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/index.html" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="FullScreen" value="false" />
   </component>
-  <component name="RunManager">
-    <list size="0" />
+  <component name="RunManager" selected="JavaScript Debug.Unnamed">
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
+      <setting name="configLocationType" value="CONFIG_FILE" />
+      <setting name="settingsFile" value="" />
+      <setting name="serverType" value="INTERNAL" />
+      <setting name="preferredDebugBrowser" value="Chrome" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unnamed" type="JavascriptDebugType" factoryName="JavaScript Debug" uri="http://localhost:53881/pacman-style/index.html">
+      <RunnerSettings RunnerId="JavascriptDebugRunner" />
+      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.Unnamed" />
+    </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="9ecc427c-899b-48b3-a3c6-562985a7426c" name="Default" comment="" />
@@ -151,26 +177,26 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1765625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1765625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -196,9 +222,21 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.608545" vertical-offset="0" max-vertical-offset="11730">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="14518">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#11698#13567#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31408775" vertical-offset="0" max-vertical-offset="14518">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="e#11698#13567#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
