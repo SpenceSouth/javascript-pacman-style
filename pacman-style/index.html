@@ -8,6 +8,14 @@
         body {
             margin: 0;
         }
+	img{
+			width: 100px;
+			height: 100px;
+			}
+	table{
+				float: right;
+				width: 315px;
+			}
     </style>
 </head>
 <body>
@@ -901,10 +909,12 @@
 
 
     <span>
-        <img src="assets/down-arrow.png" onclick="moveDown()"/>
-        <img src="assets/up-arrow.png" onclick="moveUp()"/>
-        <img src="assets/right-arrow.png" onclick="moveRight()"/>
-        <img src="assets/left-arrow.png" onclick="moveLeft()"/>
+		<table>
+         <tr><td style="text-align: center;"><img src="assets/up-arrow.png"   onclick="moveUp()"/></td></tr>
+	    <tr><td><img src="assets/left-arrow.png"   onclick="moveLeft()"/>
+	    <img src="assets/down-arrow.png"    onclick="moveDown()"/>       
+         <img src="assets/right-arrow.png"   onclick="moveRight()"/></td></tr>
+          </table>
     </span>
 
 </body>
