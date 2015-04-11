@@ -5,9 +5,11 @@
     <title>Goosepocalypse: High Scores</title>
     <link rel="stylesheet" type="text/css" href="highScoreStyle.css">
 </head>
-<body>
+<p>
 <h1>High Scores</h1>
-
+<?php
+include 'ScoresCall.php';
+?>
 
 <ul id="link"><li id="linkListItem">
     <a href="startScreen.html" class="returnButton"><span class="round">Main Menu</span></a>
