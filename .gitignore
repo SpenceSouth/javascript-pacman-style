@@ -47,6 +47,7 @@ keystore.txt
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/workspace.xml
+*.iml
 
 ## File-based project format
 *.iml
