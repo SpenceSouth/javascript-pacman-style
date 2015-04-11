@@ -1,8 +1,8 @@
 
 <?php
-define('DB_USER', 'root');
+define('DB_USER', 'marcus');
 define('DB_PASS', 'pekka');
-define('DB_DNS', 'mysql:host=104.131.127.30;dbname=pacman');
+define('DB_DNS', 'mysql:host=104.131.127.30; dbname=pacman');
 
 echo "Inside Scores";
 try {
