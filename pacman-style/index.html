@@ -73,7 +73,7 @@
         ghost0 = game.add.sprite(10*32, 10*32, 'goose0');
         ghost1 = game.add.sprite(11*32, 10*32, 'goose1');
         ghost2 = game.add.sprite(12*32, 10*32, 'goose2');
-        ghost0.scale.setTo(.5,.5);
+        ghost0.scale.setTo(.3,.3);
         ghost1.scale.setTo(.5,.5);
         ghost2.scale.setTo(.5,.5);
 
@@ -579,6 +579,8 @@
     function gameOver(){
         alert("Game over!");
     }
+
+
     var loop = 0;
     var ghost0NextX = -1;
     var ghost0NextY = -1;
@@ -592,7 +594,7 @@
         var move = GBF(myX, myY, targetX, targetY);
 
 
-        if (loop % 30 == 0)
+        if (loop % 100 == 0)
             alert(move + " " + myX + " " + myY);
 
         loop++;
