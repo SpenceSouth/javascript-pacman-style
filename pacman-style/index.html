@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -12,638 +12,922 @@
 </head>
 <body>
 
+
 <script type="text/javascript">
 
-    var game = new Phaser.Game(704, 704, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+        var game = new Phaser.Game(704, 704, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
-    function preload() {
+        function preload() {
 
-        game.load.image('background', 'assets/blank-background.png');
-        game.load.image('box', 'assets/block.png');
-        game.load.image('star', 'assets/box.png');
-        game.load.image('keith', 'assets/keith.png');
-        game.load.image('goose0', 'assets/goose0.png');
-        game.load.image('goose1', 'assets/goose1.png');
-        game.load.image('goose2', 'assets/goose2.png');
-        game.load.image('turd0', 'assets/neonGreen.png');
-        game.load.image('turd1', 'assets/blue.png');
-        game.load.image('turd2', 'assets/green.png');
+            game.load.image('background', 'assets/blank-background.png');
+            game.load.image('box', 'assets/block.png');
+            game.load.image('star', 'assets/box.png');
+            game.load.image('keith', 'assets/keith.png');
+            game.load.image('goose0', 'assets/goose0.png');
+            game.load.image('goose1', 'assets/goose1.png');
+            game.load.image('goose2', 'assets/goose2.png');
+            game.load.image('turd0', 'assets/neonGreen.png');
+            game.load.image('turd1', 'assets/blue.png');
+            game.load.image('turd2', 'assets/green.png');
 
-    }
+        }
 
-    var player;
-    var ghost0;
-    var ghost1;
-    var ghost2;
-    var blocks;
-    var turds;
-    var cursors;
-    var speed = 100;
-    var gooseSpeed = 90;
+        var player;
+        var ghost0;
+        var ghost1;
+        var ghost2;
+        var blocks;
+        var turds;
+        var cursors;
+        var speed = 100;
+        var gooseSpeed = 90;
 
-    var stars;
-    var score = 0;
-    var scoreText;
+        var stars;
+        var score = 0;
+        var scoreText;
 
-    function create() {
+        function create() {
 
-        //  We're going to be using physics, so enable the Arcade Physics system
-        game.physics.startSystem(Phaser.Physics.ARCADE);
+            //  We're going to be using physics, so enable the Arcade Physics system
+            game.physics.startSystem(Phaser.Physics.ARCADE);
 
-        //  A simple backbox for our game
-        game.add.sprite(0, 0, 'background');
+            //  A simple backbox for our game
+            game.add.sprite(0, 0, 'background');
 
-        //  The blocks group contains the box and the 2 ledges we can jump on
-        blocks = game.add.group();
-        turds = game.add.group();
-
-
-        //  We will enable physics for any object that is created in this group
-        blocks.enableBody = true;
-        turds.enableBody = true;
-
-//        //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
-//        box.scale.setTo(2, 2);
-
-        // The player and its settings
-        player = game.add.sprite(32, 32, 'keith');
-        player.scale.setTo(.75,.75);
-
-        //Add in the hosts
-        ghost0 = game.add.sprite(10*32, 10*32, 'goose0');
-        ghost1 = game.add.sprite(11*32, 10*32, 'goose1');
-        ghost2 = game.add.sprite(12*32, 10*32, 'goose2');
-        ghost0.scale.setTo(.5,.5);
-        ghost1.scale.setTo(.5,.5);
-        ghost2.scale.setTo(.5,.5);
-
-        //  We need to enable physics on the player
-        game.physics.arcade.enable(player);
-        game.physics.arcade.enable(ghost0);
-        game.physics.arcade.enable(ghost1);
-        game.physics.arcade.enable(ghost2);
-
-        //  Player physics properties. Give the little guy a slight bounce.
-        player.body.collideWorldBounds = true;
-        ghost0.body.collideWorldBounds = true;
-        ghost1.body.collideWorldBounds = true;
-        ghost2.body.collideWorldBounds = true;
+            //  The blocks group contains the box and the 2 ledges we can jump on
+            blocks = game.add.group();
+            turds = game.add.group();
 
 
-        //  Our two animations, walking left and right.
-        /*player.animations.add('left', [0, 1, 2, 3], 10, true);
-        player.animations.add('right', [5, 6, 7, 8], 10, true);*/
-        
-        //Create blocks around the boundary of the map
-        for(var i = 0; i < 22; i++){
-            
-            var box = blocks.create(i*32, 0, 'box');
-            box.body.immovable = true;
+            //  We will enable physics for any object that is created in this group
+            blocks.enableBody = true;
+            turds.enableBody = true;
 
-            var box = blocks.create(i*32, 32*21, 'box');
-            box.body.immovable = true;
+    //        //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
+    //        box.scale.setTo(2, 2);
+
+            // The player and its settings
+            player = game.add.sprite(32, 32, 'keith');
+            player.scale.setTo(.75,.75);
+
+            //Add in the hosts
+            ghost0 = game.add.sprite(10*32, 10*32, 'goose0');
+            ghost1 = game.add.sprite(11*32, 10*32, 'goose1');
+            ghost2 = game.add.sprite(12*32, 10*32, 'goose2');
+            ghost0.scale.setTo(.5,.5);
+            ghost1.scale.setTo(.5,.5);
+            ghost2.scale.setTo(.5,.5);
+
+            //  We need to enable physics on the player
+            game.physics.arcade.enable(player);
+            game.physics.arcade.enable(ghost0);
+            game.physics.arcade.enable(ghost1);
+            game.physics.arcade.enable(ghost2);
+
+            //  Player physics properties. Give the little guy a slight bounce.
+            player.body.collideWorldBounds = true;
+            ghost0.body.collideWorldBounds = true;
+            ghost1.body.collideWorldBounds = true;
+            ghost2.body.collideWorldBounds = true;
+
+            //add listener to ghost0, ghost1, ghost2 that when ghost.x%32 ==0 && ghost.y%32 == 0 call ghost function
+            //((ghost0.x % 32) == 0 && (ghost0.y % 32) == 0)
+            //((ghost1.x % 32) == 0 && (ghost1.y % 32) == 0)
+            //((ghost2.x % 32) == 0 && (ghost2.y % 32) == 0)
 
 
-            for(var j = 0; j < 22; j++){
+            //  Our two animations, walking left and right.
+            /*player.animations.add('left', [0, 1, 2, 3], 10, true);
+            player.animations.add('right', [5, 6, 7, 8], 10, true);*/
 
-                var box = blocks.create(0, j*32, 'box');
+            //Create blocks around the boundary of the map
+            for(var i = 0; i < 22; i++){
+
+                var box = blocks.create(i*32, 0, 'box');
                 box.body.immovable = true;
 
-                var box = blocks.create(32*21, j*32, 'box');
+                var box = blocks.create(i*32, 32*21, 'box');
                 box.body.immovable = true;
 
+
+                for(var j = 0; j < 22; j++){
+
+                    var box = blocks.create(0, j*32, 'box');
+                    box.body.immovable = true;
+
+                    var box = blocks.create(32*21, j*32, 'box');
+                    box.body.immovable = true;
+
+                }
+
+            }
+
+            //Create all other nodes
+            var x = 1;
+            var y = 10;
+            placeBox(x, y);
+
+            x = 1;
+            y = 11;
+            placeBox(x, y);
+
+            x = 2;
+            y = 2;
+            placeBox(x, y);
+
+            x = 2;
+            y = 4;
+            placeBox(x, y);
+
+            x = 2;
+            y = 5;
+            placeBox(x, y);
+
+            x = 2;
+            y = 6;
+            placeBox(x, y);
+
+            x = 2;
+            y = 8;
+            placeBox(x, y);
+
+            x = 2;
+            y = 8;
+            placeBox(x, y);
+
+            x = 2;
+            y = 13;
+            placeBox(x, y);
+
+            x = 2;
+            y = 15;
+            placeBox(x, y);
+
+            x = 2;
+            y = 16;
+            placeBox(x, y);
+
+            x = 2;
+            y = 17;
+            placeBox(x, y);
+
+            x = 2;
+            y = 19;
+            placeBox(x, y);
+
+            x = 3;
+            y = 2;
+            placeBox(x, y);
+
+            x = 3;
+            y = 8;
+            placeBox(x, y);
+
+            x = 3;
+            y = 10;
+            placeBox(x, y);
+
+            x = 3;
+            y = 11;
+            placeBox(x, y);
+
+            x = 3;
+            y = 13;
+            placeBox(x, y);
+
+            x = 3;
+            y = 19;
+            placeBox(x, y);
+
+            x = 4;
+            y = 2;
+            placeBox(x, y);
+
+            x = 4;
+            y = 3;
+            placeBox(x, y);
+
+            x = 4;
+            y = 4;
+            placeBox(x, y);
+
+            x = 4;
+            y = 6;
+            placeBox(x, y);
+
+            x = 4;
+            y = 8;
+            placeBox(x, y);
+
+            x = 4;
+            y = 10;
+            placeBox(x, y);
+
+            x = 4;
+            y = 11;
+            placeBox(x, y);
+
+            x = 4;
+            y = 13;
+            placeBox(x, y);
+
+            x = 4;
+            y = 15;
+            placeBox(x, y);
+
+            x = 4;
+            y = 17;
+            placeBox(x, y);
+
+            x = 4;
+            y = 18;
+            placeBox(x, y);
+
+            x = 4;
+            y = 19;
+            placeBox(x, y);
+
+            x = 5;
+            y = 6;
+            placeBox(x, y);
+
+            x = 5;
+            y = 8;
+            placeBox(x, y);
+
+            x = 5;
+            y = 10;
+            placeBox(x, y);
+
+            x = 5;
+            y = 11;
+            placeBox(x, y);
+
+            x = 5;
+            y = 13;
+            placeBox(x, y);
+
+            x = 5;
+            y = 15;
+            placeBox(x, y);
+
+            x = 6;
+            y = 2;
+            placeBox(x, y);
+
+            x = 6;
+            y = 4;
+            placeBox(x, y);
+
+            x = 6;
+            y = 5;
+            placeBox(x, y);
+
+            x = 6;
+            y = 6;
+            placeBox(x, y);
+
+            x = 6;
+            y = 15;
+            placeBox(x, y);
+
+            x = 6;
+            y = 16;
+            placeBox(x, y);
+
+            x = 6;
+            y = 17;
+            placeBox(x, y);
+
+            x = 6;
+            y = 19;
+            placeBox(x, y);
+
+            x = 7;
+            y = 4;
+            placeBox(x, y);
+
+            x = 7;
+            y = 8;
+            placeBox(x, y);
+
+            x = 7;
+            y = 9;
+            placeBox(x, y);
+
+            x = 7;
+            y = 10;
+            placeBox(x, y);
+
+            x = 7;
+            y = 11;
+            placeBox(x, y);
+
+            x = 7;
+            y = 12;
+            placeBox(x, y);
+
+            x = 7;
+            y = 13;
+            placeBox(x, y);
+
+            x = 7;
+            y = 17;
+            placeBox(x, y);
+
+            x = 8;
+            y = 2;
+            placeBox(x, y);
+
+            x = 8;
+            y = 2;
+            placeBox(x, y);
+
+            x = 8;
+            y = 6;
+            placeBox(x, y);
+
+            x = 8;
+            y = 15;
+            placeBox(x, y);
+
+            x = 8;
+            y = 19;
+            placeBox(x, y);
+
+            x = 9;
+            y = 2;
+            placeBox(x, y);
+
+            x = 9;
+            y = 3;
+            placeBox(x, y);
+
+            x = 9;
+            y = 5;
+            placeBox(x, y);
+
+            x = 9;
+            y = 6;
+            placeBox(x, y);
+
+            x = 9;
+            y = 8;
+            placeBox(x, y);
+
+            x = 9;
+            y = 9;
+            placeBox(x, y);
+
+            x = 9;
+            y = 12;
+            placeBox(x, y);
+
+            x = 9;
+            y = 13;
+            placeBox(x, y);
+
+            x = 9;
+            y = 15;
+            placeBox(x, y);
+
+            x = 9;
+            y = 16;
+            placeBox(x, y);
+
+            x = 9;
+            y = 16;
+            placeBox(x, y);
+
+            x = 9;
+            y = 18;
+            placeBox(x, y);
+
+            x = 9;
+            y = 19;
+            placeBox(x, y);
+
+            placeBox(10, 8);
+            placeBox(10, 13);
+            placeBox(11, 1);
+            placeBox(11, 2);
+            placeBox(11, 4);
+            placeBox(11, 5);
+            placeBox(11, 6);
+            placeBox(11, 8);
+            placeBox(11, 13);
+            placeBox(11, 15);
+            placeBox(11, 16);
+            placeBox(11, 17);
+            placeBox(11, 19);
+            placeBox(11, 20);
+            placeBox(12, 8);
+            placeBox(12, 9);
+            placeBox(12, 10);
+            placeBox(12, 11);
+            placeBox(12, 12);
+            placeBox(12, 13);
+            placeBox(13, 2);
+            placeBox(13, 3);
+            placeBox(13, 4);
+            placeBox(13, 6);
+            placeBox(13, 15);
+            placeBox(13, 17);
+            placeBox(13, 18);
+            placeBox(13, 19);
+            placeBox(14, 2);
+            placeBox(14, 6);
+            placeBox(14, 7);
+            placeBox(14, 8);
+            placeBox(14, 10);
+            placeBox(14, 11);
+            placeBox(14, 13);
+            placeBox(14, 14);
+            placeBox(14, 15);
+            placeBox(14, 19);
+            placeBox(15, 4);
+            placeBox(15, 10);
+            placeBox(15, 11);
+            placeBox(15, 17);
+            placeBox(16, 2);
+            placeBox(16, 3);
+            placeBox(16, 4);
+            placeBox(16, 5);
+            placeBox(16, 7);
+            placeBox(16, 8);
+            placeBox(16, 10);
+            placeBox(16, 11);
+            placeBox(16, 13);
+            placeBox(16, 14);
+            placeBox(16, 16);
+            placeBox(16, 17);
+            placeBox(16, 18);
+            placeBox(16, 19);
+            placeBox(17, 2);
+            placeBox(17, 3);
+            placeBox(17, 8);
+            placeBox(17, 10);
+            placeBox(17, 11);
+            placeBox(17, 13);
+            placeBox(17, 18);
+            placeBox(17, 19);
+            placeBox(18, 2);
+            placeBox(18, 3);
+            placeBox(18, 5);
+            placeBox(18, 6);
+            placeBox(18, 8);
+            placeBox(18, 13);
+            placeBox(18, 15);
+            placeBox(18, 16);
+            placeBox(18, 18);
+            placeBox(18, 19);
+            placeBox(19, 2);
+            placeBox(19, 3);
+            placeBox(19, 5);
+            placeBox(19, 6);
+            placeBox(19, 8);
+            placeBox(19, 10);
+            placeBox(19, 11);
+            placeBox(19, 13);
+            placeBox(19, 15);
+            placeBox(19, 16);
+            placeBox(19, 18);
+            placeBox(19, 19);
+            placeBox(20, 10);
+            placeBox(20, 11);
+
+            //  The score
+            scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
+
+            //  Our controls.
+            cursors = game.input.keyboard.createCursorKeys();
+
+
+            var dodo = turds.create(7*32, 2*32, 'turd0');
+            dodo.body.immovable = true;
+
+        }
+
+        function update() {
+
+            //  Collide the player and the stars with the blocks
+            game.physics.arcade.collide(player, blocks);
+            game.physics.arcade.collide(player, ghost0, gameOver, null, this);
+            game.physics.arcade.collide(player, ghost1, gameOver, null, this);
+            game.physics.arcade.collide(player, ghost2, gameOver, null, this);
+            game.physics.arcade.overlap(player, turds, steppedInIt, null, this);
+            //game.physics.arcade.collide(ghost0, blocks);
+            game.physics.arcade.collide(ghost1, blocks);
+            game.physics.arcade.collide(ghost2, blocks);
+
+            score += 1;
+            scoreText.text = 'Score: ' + score;
+
+            if (cursors.left.isDown)
+            {
+                //  Move to the left
+                moveLeft();
+
+    //            player.animations.play('left');
+            }
+            else if (cursors.right.isDown)
+            {
+                //  Move to the right
+                moveRight();
+
+    //            player.animations.play('right');
+            }
+            else if (cursors.up.isDown)
+            {
+                //  Move to the up
+                moveUp();
+
+    //            player.animations.play('right');
+            }
+            else if (cursors.down.isDown)
+            {
+                //  Move to the down
+                moveDown();
+
+    //            player.animations.play('right');
+            }
+            else
+            {
+                //  Stand still
+                player.animations.stop();
+
+                player.frame = 4;
+            }
+
+
+            ghost0Func(player.x, player.y);
+            ghost1Func(player.x, player.y);
+            ghost2Func(player.x, player.y);
+            turd();
+
+            //Reset the speed every 500 ticks
+            if(score % 500 == 0){
+                speed = 100;
             }
 
         }
 
-        //Create all other nodes
-        var x = 1;
-        var y = 10;
-        placeBox(x, y);
-
-        x = 1;
-        y = 11;
-        placeBox(x, y);
-
-        x = 2;
-        y = 2;
-        placeBox(x, y);
-
-        x = 2;
-        y = 4;
-        placeBox(x, y);
-
-        x = 2;
-        y = 5;
-        placeBox(x, y);
-
-        x = 2;
-        y = 6;
-        placeBox(x, y);
-
-        x = 2;
-        y = 8;
-        placeBox(x, y);
-
-        x = 2;
-        y = 8;
-        placeBox(x, y);
-
-        x = 2;
-        y = 13;
-        placeBox(x, y);
-
-        x = 2;
-        y = 15;
-        placeBox(x, y);
-
-        x = 2;
-        y = 16;
-        placeBox(x, y);
-
-        x = 2;
-        y = 17;
-        placeBox(x, y);
-
-        x = 2;
-        y = 19;
-        placeBox(x, y);
-
-        x = 3;
-        y = 2;
-        placeBox(x, y);
-
-        x = 3;
-        y = 8;
-        placeBox(x, y);
-
-        x = 3;
-        y = 10;
-        placeBox(x, y);
-
-        x = 3;
-        y = 11;
-        placeBox(x, y);
-
-        x = 3;
-        y = 13;
-        placeBox(x, y);
-
-        x = 3;
-        y = 19;
-        placeBox(x, y);
-
-        x = 4;
-        y = 2;
-        placeBox(x, y);
-
-        x = 4;
-        y = 3;
-        placeBox(x, y);
-
-        x = 4;
-        y = 4;
-        placeBox(x, y);
-
-        x = 4;
-        y = 6;
-        placeBox(x, y);
-
-        x = 4;
-        y = 8;
-        placeBox(x, y);
-
-        x = 4;
-        y = 10;
-        placeBox(x, y);
-
-        x = 4;
-        y = 11;
-        placeBox(x, y);
-
-        x = 4;
-        y = 13;
-        placeBox(x, y);
-
-        x = 4;
-        y = 15;
-        placeBox(x, y);
-
-        x = 4;
-        y = 17;
-        placeBox(x, y);
-
-        x = 4;
-        y = 18;
-        placeBox(x, y);
-
-        x = 4;
-        y = 19;
-        placeBox(x, y);
-
-        x = 5;
-        y = 6;
-        placeBox(x, y);
-
-        x = 5;
-        y = 8;
-        placeBox(x, y);
-
-        x = 5;
-        y = 10;
-        placeBox(x, y);
-
-        x = 5;
-        y = 11;
-        placeBox(x, y);
-
-        x = 5;
-        y = 13;
-        placeBox(x, y);
-
-        x = 5;
-        y = 15;
-        placeBox(x, y);
-
-        x = 6;
-        y = 2;
-        placeBox(x, y);
-
-        x = 6;
-        y = 4;
-        placeBox(x, y);
-
-        x = 6;
-        y = 5;
-        placeBox(x, y);
-
-        x = 6;
-        y = 6;
-        placeBox(x, y);
-
-        x = 6;
-        y = 15;
-        placeBox(x, y);
-
-        x = 6;
-        y = 16;
-        placeBox(x, y);
-
-        x = 6;
-        y = 17;
-        placeBox(x, y);
-
-        x = 6;
-        y = 19;
-        placeBox(x, y);
-
-        x = 7;
-        y = 4;
-        placeBox(x, y);
-
-        x = 7;
-        y = 8;
-        placeBox(x, y);
-
-        x = 7;
-        y = 9;
-        placeBox(x, y);
-
-        x = 7;
-        y = 10;
-        placeBox(x, y);
-
-        x = 7;
-        y = 11;
-        placeBox(x, y);
-
-        x = 7;
-        y = 12;
-        placeBox(x, y);
-
-        x = 7;
-        y = 13;
-        placeBox(x, y);
-
-        x = 7;
-        y = 17;
-        placeBox(x, y);
-
-        x = 8;
-        y = 2;
-        placeBox(x, y);
-
-        x = 8;
-        y = 2;
-        placeBox(x, y);
-
-        x = 8;
-        y = 6;
-        placeBox(x, y);
-
-        x = 8;
-        y = 15;
-        placeBox(x, y);
-
-        x = 8;
-        y = 19;
-        placeBox(x, y);
-
-        x = 9;
-        y = 2;
-        placeBox(x, y);
-
-        x = 9;
-        y = 3;
-        placeBox(x, y);
-
-        x = 9;
-        y = 5;
-        placeBox(x, y);
-
-        x = 9;
-        y = 6;
-        placeBox(x, y);
-
-        x = 9;
-        y = 8;
-        placeBox(x, y);
-
-        x = 9;
-        y = 9;
-        placeBox(x, y);
-
-        x = 9;
-        y = 12;
-        placeBox(x, y);
-
-        x = 9;
-        y = 13;
-        placeBox(x, y);
-
-        x = 9;
-        y = 15;
-        placeBox(x, y);
-
-        x = 9;
-        y = 16;
-        placeBox(x, y);
-
-        x = 9;
-        y = 16;
-        placeBox(x, y);
-
-        x = 9;
-        y = 18;
-        placeBox(x, y);
-
-        x = 9;
-        y = 19;
-        placeBox(x, y);
-
-        placeBox(10, 8);
-        placeBox(10, 13);
-        placeBox(11, 1);
-        placeBox(11, 2);
-        placeBox(11, 4);
-        placeBox(11, 5);
-        placeBox(11, 6);
-        placeBox(11, 8);
-        placeBox(11, 13);
-        placeBox(11, 15);
-        placeBox(11, 16);
-        placeBox(11, 17);
-        placeBox(11, 19);
-        placeBox(11, 20);
-        placeBox(12, 8);
-        placeBox(12, 9);
-        placeBox(12, 10);
-        placeBox(12, 11);
-        placeBox(12, 12);
-        placeBox(12, 13);
-        placeBox(13, 2);
-        placeBox(13, 3);
-        placeBox(13, 4);
-        placeBox(13, 6);
-        placeBox(13, 15);
-        placeBox(13, 17);
-        placeBox(13, 18);
-        placeBox(13, 19);
-        placeBox(14, 2);
-        placeBox(14, 6);
-        placeBox(14, 7);
-        placeBox(14, 8);
-        placeBox(14, 10);
-        placeBox(14, 11);
-        placeBox(14, 13);
-        placeBox(14, 14);
-        placeBox(14, 15);
-        placeBox(14, 19);
-        placeBox(15, 4);
-        placeBox(15, 10);
-        placeBox(15, 11);
-        placeBox(15, 17);
-        placeBox(16, 2);
-        placeBox(16, 3);
-        placeBox(16, 4);
-        placeBox(16, 5);
-        placeBox(16, 7);
-        placeBox(16, 8);
-        placeBox(16, 10);
-        placeBox(16, 11);
-        placeBox(16, 13);
-        placeBox(16, 14);
-        placeBox(16, 16);
-        placeBox(16, 17);
-        placeBox(16, 18);
-        placeBox(16, 19);
-        placeBox(17, 2);
-        placeBox(17, 3);
-        placeBox(17, 8);
-        placeBox(17, 10);
-        placeBox(17, 11);
-        placeBox(17, 13);
-        placeBox(17, 18);
-        placeBox(17, 19);
-        placeBox(18, 2);
-        placeBox(18, 3);
-        placeBox(18, 5);
-        placeBox(18, 6);
-        placeBox(18, 8);
-        placeBox(18, 13);
-        placeBox(18, 15);
-        placeBox(18, 16);
-        placeBox(18, 18);
-        placeBox(18, 19);
-        placeBox(19, 2);
-        placeBox(19, 3);
-        placeBox(19, 5);
-        placeBox(19, 6);
-        placeBox(19, 8);
-        placeBox(19, 10);
-        placeBox(19, 11);
-        placeBox(19, 13);
-        placeBox(19, 15);
-        placeBox(19, 16);
-        placeBox(19, 18);
-        placeBox(19, 19);
-        placeBox(20, 10);
-        placeBox(20, 11);
-
-        //  The score
-        scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
-
-        //  Our controls.
-        cursors = game.input.keyboard.createCursorKeys();
-
-
-        var dodo = turds.create(7*32, 2*32, 'turd0');
-        dodo.body.immovable = true;
-
-    }
-
-    function update() {
-
-        //  Collide the player and the stars with the blocks
-        game.physics.arcade.collide(player, blocks);
-        game.physics.arcade.collide(player, ghost0, gameOver, null, this);
-        game.physics.arcade.collide(player, ghost1, gameOver, null, this);
-        game.physics.arcade.collide(player, ghost2, gameOver, null, this);
-        game.physics.arcade.overlap(player, turds, steppedInIt, null, this);
-        game.physics.arcade.collide(ghost0, blocks);
-        game.physics.arcade.collide(ghost1, blocks);
-        game.physics.arcade.collide(ghost2, blocks);
-
-        score += 1;
-        scoreText.text = 'Score: ' + score;
-
-        if (cursors.left.isDown)
-        {
-            //  Move to the left
-            player.body.velocity.y = 0;
-            player.body.velocity.x = -speed;
-
-//            player.animations.play('left');
-        }
-        else if (cursors.right.isDown)
-        {
+        function moveRight(){
             //  Move to the right
             player.body.velocity.y = 0;
             player.body.velocity.x = speed;
 
-//            player.animations.play('right');
         }
-        else if (cursors.up.isDown)
-        {
-            //  Move to the right
+
+        function moveLeft(){
+        //  Move to the left
+            player.body.velocity.y = 0;
+            player.body.velocity.x = -speed;
+        }
+
+        function moveUp(){
+            //  Move to the up
             player.body.velocity.x = 0;
             player.body.velocity.y = -speed;
 
-//            player.animations.play('right');
         }
-        else if (cursors.down.isDown)
-        {
-            //  Move to the right
+
+        function moveDown(){
+            //  Move to the down
             player.body.velocity.x = 0;
             player.body.velocity.y = speed;
 
-//            player.animations.play('right');
-        }
-        else
-        {
-            //  Stand still
-            player.animations.stop();
-
-            player.frame = 4;
         }
 
-
-        ghost0Func(player.x, player.y);
-        ghost1Func(player.x, player.y);
-        ghost2Func(player.x, player.y);
-        turd();
-
-        //Reset the speed every 500 ticks
-        if(score % 500 == 0){
-            speed = 100;
+        function placeBox(x, y){
+            var box = blocks.create(y*32, x*32, 'box');
+            box.body.immovable = true;
         }
 
-    }
-
-    function placeBox(x, y){
-        var box = blocks.create(y*32, x*32, 'box');
-        box.body.immovable = true;
-    }
-
-    //Send to PHP here
-    function gameOver(){
-        alert("Game over!");
-    }
-
-    //TODO: Keith- Implement your search algorithms here.
-    function ghost0Func(playerX, playerY){
-
-        //alert(playerX, " , " + playerY);
-
-    }
-
-
-    function ghost1Func(playerX, playerY){
-
-
-
-    }
-
-
-    function ghost2Func(playerX, playerY){
-
-
-
-    }
-
-    function turd(){
-
-        var random = Math.random() * (100 - 1) + 1;
-
-        if(random < 99.5){
-
+        //Send to PHP here
+        function gameOver(){
+            alert("Game over!");
         }
-        else{
 
-            var choice = Math.random() * (300 - 1) + 1;
+            //alert(playerX, " , " + playerY);
 
-            //Ghost0
-            if(choice < 100){
-                var dodo = turds.create(ghost0.x, ghost0.y, 'turd0');
-                dodo.body.immovable = true;
+            var loop = 0;
+            var ghost0NextX = -1;
+            var ghost0NextY = -1;
+            //TODO: Keith- Implement your search algorithms here.
+            function ghost0Func(playerX, playerY) {
+
+                var myY = Math.floor((ghost0.x+16) / 32);
+                var myX = Math.floor((ghost0.y+16) / 32);
+                var targetY = Math.floor(playerX / 32);
+                var targetX = Math.floor(playerY / 32);
+                var move = GBF(myX, myY, targetX, targetY);
+
+
+                //if (loop % 100 == 0)
+                //    alert(move + " (" + myX + "," + myY + ")  (" + ghost0.x + "," + ghost0.y + ")" );
+
+
+                //loop++;
+
+                if (move == "up") {
+                    if (myX == ghost0NextX && myY == ghost0NextY) {
+                        ghost0.body.velocity.x = 0;
+                        ghost0.body.velocity.y = 0;
+                        ghost0NextX = myX - 1;
+                        ghost0NextY = myY;
+                        ghost0.x = myY*32;
+                        ghost0.y = myX*32;
+
+                    }
+                    else {
+                        ghost0.body.velocity.x = 0;
+                        ghost0.body.velocity.y = -80;
+                    }
+                }
+                else if (move == "down") {
+                    if (myX == ghost0NextX && myY == ghost0NextY) {
+                        ghost0.body.velocity.x = 0;
+                        ghost0.body.velocity.y = 0;
+                        ghost0NextX = myX + 1;
+                        ghost0NextY = myY;
+                        ghost0.x = myY*32;
+                        ghost0.y = myX*32;
+                    }
+                    else {
+                        
+                        ghost0.body.velocity.x = 0;
+                        ghost0.body.velocity.y = 80;
+                    }
+                }
+                else if (move == "right") {
+                    if (myX == ghost0NextX && myY == ghost0NextY) {
+                        ghost0.body.velocity.x = 0;
+                        ghost0.body.velocity.y = 0;
+                        ghost0NextX = myX;
+                        ghost0NextY = myY + 1;
+                        ghost0.x = myY*32;
+                        ghost0.y = myX*32;
+                    }
+                    else {
+                        
+                        ghost0.body.velocity.x = 80;
+                        ghost0.body.velocity.y = 0;
+                    }
+                }
+                else if (move == "left") {
+                    if (myX == ghost0NextX && myY == ghost0NextY) {
+                        ghost0.body.velocity.x = 0;
+                        ghost0.body.velocity.y = 0;
+                        ghost0NextX = myX;
+                        ghost0NextY = myY - 1;
+                        ghost0.x = myY*32;
+                        ghost0.y = myX*32;
+                    }
+                    else {
+                        
+                        ghost0.body.velocity.x = -80;
+                        ghost0.body.velocity.y = 0;
+                    }
+                }
+                else {
+
+                    ghost0.body.velocity.x = 0;
+                    ghost0.body.velocity.y = 0;
+                }
             }
-            //Ghost1
-            else if(choice < 200){
-                var dodo = turds.create(ghost1.x, ghost1.y, 'turd1');
-                dodo.body.immovable = true;
+
+
+            function ghost1Func(playerX, playerY) {
+                var myY = Math.floor(ghost1.x / 32);
+                var myX = Math.floor(ghost1.y / 32);
+                var targetY = Math.floor(playerX / 32);
+                var targetX = Math.floor(playerY / 32);
+                //var move = random(myX, myY, targetX, targetY);
 
             }
-            //Ghost2
-            else{
-                var dodo = turds.create(ghost2.x, ghost2.y, 'turd2');
-                dodo.body.immovable = true;
+
+            function ghost2Func(playerX, playerY) {
+                var myY = Math.floor(ghost2.x / 32);
+                var myX = Math.floor(ghost2.y / 32);
+                var targetY = Math.floor(playerX / 32);
+                var targetX = Math.floor(playerY / 32);
+                //var move = IDS(myX, myY, targetX, targetY);
+            }
+
+            //self implemented boolean array
+            //need to create a 2 dimensional array of booleans
+            //true you can go to that space
+            //false there is an obstacle
+            var map = new Array(
+                    [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],//0
+                    [false, true, true, true, true, true, true, true, true, true, false, false, true, true, true, true, true, true, true, true, true, false],//1
+                    [false, true, false, true, false, false, false, true, false, true, true, true, true, false, true, false, false, false, true, false, true, false],//2
+                    [false, true, false, true, true, true, true, true, false, true, false, false, true, false, true, true, true, true, true, false, true, false],//3
+                    [false, true, false, false, false, true, false, true, false, true, false, false, true, false, true, false, true, false, false, false, true, false],//4
+                    [false, true, true, true, true, true, false, true, false, true, false, false, true, false, true, false, true, true, true, true, true, false],//5
+                    [false, true, false, true, false, false, false, true, true, true, true, true, true, true, true, false, false, false, true, false, true, false],//6
+                    [false, true, true, true, false, true, true, true, false, false, false, false, false, false, true, true, true, false, true, true, true, false],//7
+                    [false, true, false, true, true, true, false, true, true, true, true, true, true, true, true, false, true, true, true, false, true, false],//8
+                    [false, true, false, false, true, false, false, true, false, false, true, true, false, false, true, false, false, true, false, false, true, false],//9
+                    [false, true, true, true, true, true, true, true, false, true, true, true, true, false, true, true, true, true, true, true, true, false],//10
+                    [false, false, false, true, false, false, false, true, false, true, true, true, true, false, true, false, false, false, true, false, false, false],//11
+                    [false, true, true, true, true, true, true, true, false, false, false, false, false, false, true, true, true, true, true, true, true, false],//12
+                    [false, true, false, false, false, true, false, true, true, true, true, true, true, true, true, false, true, false, false, false, true, false],//13
+                    [false, true, false, true, true, true, false, false, false, true, false, false, true, false, false, false, true, true, true, false, true, false],//14
+                    [false, true, true, true, false, true, true, true, true, true, false, false, true, true, true, true, true, false, true, true, true, false],//15
+                    [false, true, false, false, false, false, true, false, false, true, false, false, true, false, false, true, false, false, false, false, true, false],//16
+                    [false, true, false, false, true, true, true, true, false, true, false, false, true, false, true, true, true, true, false, false, true, false],//17
+                    [false, true, false, false, true, false, false, true, false, true, true, true, true, false, true, false, false, true, false, false, true, false],//18
+                    [false, true, false, false, true, false, false, true, false, true, false, false, true, false, true, false, false, true, false, false, true, false],//19
+                    [false, true, true, true, true, true, true, true, true, true, false, false, true, true, true, true, true, true, true, true, true, false],//20
+                    [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false] //21
+                );
+
+            //greedy best first search
+            //returns "up", "down", "left", "right", "no"
+            function GBF(myX, myY, targetX, targetY) {
+
+                var optimalPathDistance = map.length * map[0].length;
+                var movementDirection = "No";
+
+                if ((myX - 1) >= 0 && map[myX - 1][myY] == true && Math.sqrt(Math.pow(((myX - 1) - targetX), 2) + Math.pow((myY - targetY), 2)) < optimalPathDistance) {
+                    optimalPathDistance = Math.sqrt(Math.pow(((myX - 1) - targetX), 2) + Math.pow((myY - targetY), 2));
+                    movementDirection = "up";
+                }
+
+                if ((myX + 1) < map.length && map[myX + 1][myY] == true && Math.sqrt(Math.pow(((myX + 1) - targetX), 2) + Math.pow((myY - targetY), 2)) < optimalPathDistance) {
+                    optimalPathDistance = Math.sqrt(Math.pow(((myX + 1) - targetX), 2) + Math.pow((myY - targetY), 2));
+                    movementDirection = "down";
+                }
+
+                if ((myY - 1) >= 0 && map[myX][myY - 1] == true && Math.sqrt(Math.pow((myX - targetX), 2) + Math.pow(((myY - 1) - targetY), 2)) < optimalPathDistance) {
+                    optimalPathDistance = Math.sqrt(Math.pow((myX - targetX), 2) + Math.pow(((myY - 1) - targetY), 2));
+                    movementDirection = "left";
+                }
+
+                if ((myY + 1) < map[0].length && map[myX][myY + 1] == true && Math.sqrt(Math.pow((myX - targetX), 2) + Math.pow(((myY + 1) - targetY), 2)) < optimalPathDistance) {
+                    optimalPathDistance = Math.sqrt(Math.pow((myX - targetX), 2) + Math.pow(((myY + 1) - targetY), 2));
+                    movementDirection = "right";
+                }
+                return movementDirection;
+            }
+
+            //random movement return
+            //returns "up", "down", "left", "right", "no"
+            function random(myX, myY) {
+                var value = Math.random() % 4;
+                if (value == 0) {
+                    return "up";
+                }
+                else if (value == 1) {
+                    return "down";
+                }
+                else if (value == 2) {
+                    return "left";
+                }
+                else {
+                    return "right";
+                }
+            }
+
+            //itterative deepening depth first search
+            //returns "up", "down", "left", "right", "no"
+            function IDS(myX, myY, targetX, targetY) {
+                var depth = 0;
+                var direction = "no";
+
+                if (myX == targetX && myY == targetY) {
+                    return direction;
+                }
+                else {
+                    while (direction == "no") {
+                        //alert(depth);
+                        if (IDSRecursive(myX, myY - 1, targetX, targetY, depth)) {
+                            direction = "up";
+                        }
+
+                        if (IDSRecursive(myX, myY + 1, targetX, targetY, depth)) {
+                            direction = "down";
+                        }
+
+                        if (IDSRecursive(myX - 1, myY, targetX, targetY, depth)) {
+                            direction = "left";
+                        }
+
+                        if (IDSRecursive(myX + 1, myY, targetX, targetY, depth)) {
+                            direction = "right";
+                        }
+                        depth++;
+                        if (depth > (50)) {
+                            break;
+                        }
+                    }
+                    return direction;
+                }
+            }
+
+            //do not call this method IDS will call it for you
+            function IDSRecursive(myX, myY, targetX, targetY, depth) {
+
+                if (depth > 0) {
+                    if ((myY - 1) >= 0 && map[myX][myY - 1] != false) {
+
+                        if (IDSRecursive(myX, (myY - 1), targetX, targetY, (depth - 1))) {
+                            return true;
+                        }
+                    }
+
+                    if ((myY + 1) < map[0].length && map[myX][myY + 1] != false) {
+
+                        if (IDSRecursive(myX, (myY + 1), targetX, targetY, (depth - 1))) {
+                            return true;
+                        }
+                    }
+
+                    if ((myX - 1) >= 0 && map[myX - 1][myY] != false) {
+                        if (IDSRecursive((myX - 1), myY, targetX, targetY, (depth - 1))) {
+                            return true;
+                        }
+                    }
+
+                    if ((myX + 1) < map.length && map[myX + 1][myY] != false) {
+                        if (IDSRecursive((myX + 1), myY, targetX, targetY, (depth - 1))) {
+                            return true;
+                        }
+                    }
+
+                    return false;
+
+                }
+                else if (depth == 0) {
+                    if (myX == targetX && myY == targetY) {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+                else {
+                    return false;
+                }
+            }
+
+            function turd() {
+
+                var random = Math.random() * (100 - 1) + 1;
+
+                if (random < 99.5) {
+
+                }
+                else {
+
+                    var choice = Math.random() * (300 - 1) + 1;
+
+                    //Ghost0
+                    if (choice < 100) {
+                        var dodo = turds.create(ghost0.x, ghost0.y, 'turd0');
+                        dodo.body.immovable = true;
+                    }
+                        //Ghost1
+                    else if (choice < 200) {
+                        var dodo = turds.create(ghost1.x, ghost1.y, 'turd1');
+                        dodo.body.immovable = true;
+
+                    }
+                        //Ghost2
+                    else {
+                        var dodo = turds.create(ghost2.x, ghost2.y, 'turd2');
+                        dodo.body.immovable = true;
+
+                    }
+
+                }
 
             }
 
-        }
+            function steppedInIt(player, dodo) {
 
-    }
+                dodo.kill();
 
-    function steppedInIt(player, dodo){
-
-        dodo.kill();
-
-        speed -= 5;
+                speed -= 5;
 
 
-    }
+            }
 
-</script>
+            function mouseClick() {
+                alert("click");
+            }
+
+    </script>
+
+
+    <span>
+        <img src="assets/down-arrow.png" onclick="moveDown()"/>
+        <img src="assets/up-arrow.png" onclick="moveUp()"/>
+        <img src="assets/right-arrow.png" onclick="moveRight()"/>
+        <img src="assets/left-arrow.png" onclick="moveLeft()"/>
+    </span>
 
 </body>
 </html>

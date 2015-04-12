@@ -48,7 +48,6 @@ keystore.txt
 .idea/dynamic.xml
 .idea/workspace.xml
 *.idea
-## File-based project format
 *.iml
 
 # Old-style IDEA project files
