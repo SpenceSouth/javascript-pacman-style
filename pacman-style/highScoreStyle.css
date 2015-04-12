@@ -16,6 +16,30 @@ h2{
     margin: 2.5% 20%;
 }
 
+h3{
+    margin: 2.5% 20%;
+}
+
+table{
+    font-size: x-large;
+    margin: 5% 30% 30% 48%;
+    border: 1px solid #8A1300;
+
+}
+
+tr{
+    padding: inherit;
+}
+td{
+    border: 1px solid #8A1300;
+    font-size: xx-large;
+    padding: inherit;
+}
+th{
+    border: 1px solid #8A1300;
+}
+
+
 #link{
     list-style: none;
     text-align: center;
@@ -73,3 +97,5 @@ a.returnButton {
     text-decoration: none;
     alignment: center;
 }
+
+
