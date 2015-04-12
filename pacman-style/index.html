@@ -74,9 +74,9 @@
             ghost0 = game.add.sprite(10*32, 10*32, 'goose0');
             ghost1 = game.add.sprite(11*32, 10*32, 'goose1');
             ghost2 = game.add.sprite(12*32, 10*32, 'goose2');
-            ghost0.scale.setTo(.5,.5);
-            ghost1.scale.setTo(.5,.5);
-            ghost2.scale.setTo(.5,.5);
+            ghost0.scale.setTo(.4,.4);
+            ghost1.scale.setTo(.4,.4);
+            ghost2.scale.setTo(.4,.4);
 
             //  We need to enable physics on the player
             game.physics.arcade.enable(player);
@@ -517,8 +517,8 @@
             game.physics.arcade.collide(player, ghost2, gameOver, null, this);
             game.physics.arcade.overlap(player, turds, steppedInIt, null, this);
             //game.physics.arcade.collide(ghost0, blocks);
-            game.physics.arcade.collide(ghost1, blocks);
-            game.physics.arcade.collide(ghost2, blocks);
+            //game.physics.arcade.collide(ghost1, blocks);
+            //game.physics.arcade.collide(ghost2, blocks);
 
             score += 1;
             scoreText.text = 'Score: ' + score;
@@ -611,6 +611,7 @@
 
             //alert(playerX, " , " + playerY);
 
+
             var loop = 0;
             var ghost0NextX = -1;
             var ghost0NextY = -1;
@@ -626,9 +627,8 @@
 
                 //if (loop % 100 == 0)
                 //    alert(move + " (" + myX + "," + myY + ")  (" + ghost0.x + "," + ghost0.y + ")" );
-
-
                 //loop++;
+
 
                 if (move == "up") {
                     if (myX == ghost0NextX && myY == ghost0NextY) {
@@ -697,22 +697,214 @@
                 }
             }
 
+            var ghost1previousDirection = "up";
+            var ghost1NextX = -1;
+            var ghost1NextY = -1;
 
             function ghost1Func(playerX, playerY) {
-                var myY = Math.floor(ghost1.x / 32);
-                var myX = Math.floor(ghost1.y / 32);
-                var targetY = Math.floor(playerX / 32);
-                var targetX = Math.floor(playerY / 32);
+                var myY = Math.floor((ghost1.x+16) / 32);
+                var myX = Math.floor((ghost1.y+16) / 32);
                 //var move = random(myX, myY, targetX, targetY);
+                
+                if(nextCell(ghost1previousDirection, myX, myY)){
+
+                }
+                else {
+                    ghost1previousDirection = random(ghost1previousDirection, myX, myY);
+
+                }
+
+
+                if (ghost1previousDirection == "up") {
+                    if (myX == ghost1NextX && myY == ghost1NextY) {
+                        ghost1.body.velocity.x = 0;
+                        ghost1.body.velocity.y = 0;
+                        ghost1NextX = myX - 1;
+                        ghost1NextY = myY;
+                        ghost1.x = myY * 32;
+                        ghost1.y = myX * 32;
+
+                    }
+                    else {
+                        ghost1.body.velocity.x = 0;
+                        ghost1.body.velocity.y = -80;
+                    }
+                }
+                else if (ghost1previousDirection == "down") {
+                    if (myX == ghost1NextX && myY == ghost1NextY) {
+                        ghost1.body.velocity.x = 0;
+                        ghost1.body.velocity.y = 0;
+                        ghost1NextX = myX + 1;
+                        ghost1NextY = myY;
+                        ghost1.x = myY * 32;
+                        ghost1.y = myX * 32;
+                    }
+                    else {
+
+                        ghost1.body.velocity.x = 0;
+                        ghost1.body.velocity.y = 80;
+                    }
+                }
+                else if (ghost1previousDirection == "right") {
+                    if (myX == ghost1NextX && myY == ghost1NextY) {
+                        ghost1.body.velocity.x = 0;
+                        ghost1.body.velocity.y = 0;
+                        ghost1NextX = myX;
+                        ghost1NextY = myY + 1;
+                        ghost1.x = myY * 32;
+                        ghost1.y = myX * 32;
+                    }
+                    else {
+
+                        ghost1.body.velocity.x = 80;
+                        ghost1.body.velocity.y = 0;
+                    }
+                }
+                else if (ghost1previousDirection == "left") {
+                    if (myX == ghost1NextX && myY == ghost1NextY) {
+                        ghost1.body.velocity.x = 0;
+                        ghost1.body.velocity.y = 0;
+                        ghost1NextX = myX;
+                        ghost1NextY = myY - 1;
+                        ghost1.x = myY * 32;
+                        ghost1.y = myX * 32;
+                    }
+                    else {
+
+                        ghost1.body.velocity.x = -80;
+                        ghost1.body.velocity.y = 0;
+                    }
+                }
+                else {
+
+                    ghost1.body.velocity.x = 0;
+                    ghost1.body.velocity.y = 0;
+                }
 
             }
 
+            var ghost2NextX = -1;
+            var ghost2NextY = -1;
+            //TODO: Keith- Implement your search algorithms here.
             function ghost2Func(playerX, playerY) {
-                var myY = Math.floor(ghost2.x / 32);
-                var myX = Math.floor(ghost2.y / 32);
+
+                var myY = Math.floor((ghost2.x + 16) / 32);
+                var myX = Math.floor((ghost2.y + 16) / 32);
                 var targetY = Math.floor(playerX / 32);
                 var targetX = Math.floor(playerY / 32);
-                //var move = IDS(myX, myY, targetX, targetY);
+                var move = GBFLR(myX, myY, targetX, targetY);
+
+
+                //if (loop % 100 == 0)
+                //    alert(move + " (" + myX + "," + myY + ")  (" + ghost0.x + "," + ghost0.y + ")" );
+                //loop++;
+
+
+                if (move == "up") {
+                    if (myX == ghost2NextX && myY == ghost2NextY) {
+                        ghost2.body.velocity.x = 0;
+                        ghost2.body.velocity.y = 0;
+                        ghost2NextX = myX - 1;
+                        ghost2NextY = myY;
+                        ghost2.x = myY * 32;
+                        ghost2.y = myX * 32;
+
+                    }
+                    else {
+                        ghost2.body.velocity.x = 0;
+                        ghost2.body.velocity.y = -80;
+                    }
+                }
+                else if (move == "down") {
+                    if (myX == ghost2NextX && myY == ghost2NextY) {
+                        ghost2.body.velocity.x = 0;
+                        ghost2.body.velocity.y = 0;
+                        ghost2NextX = myX + 1;
+                        ghost2NextY = myY;
+                        ghost2.x = myY * 32;
+                        ghost2.y = myX * 32;
+                    }
+                    else {
+
+                        ghost2.body.velocity.x = 0;
+                        ghost2.body.velocity.y = 80;
+                    }
+                }
+                else if (move == "right") {
+                    if (myX == ghost2NextX && myY == ghost2NextY) {
+                        ghost2.body.velocity.x = 0;
+                        ghost2.body.velocity.y = 0;
+                        ghost2NextX = myX;
+                        ghost2NextY = myY + 1;
+                        ghost2.x = myY * 32;
+                        ghost2.y = myX * 32;
+                    }
+                    else {
+
+                        ghost2.body.velocity.x = 80;
+                        ghost2.body.velocity.y = 0;
+                    }
+                }
+                else if (move == "left") {
+                    if (myX == ghost2NextX && myY == ghost2NextY) {
+                        ghost2.body.velocity.x = 0;
+                        ghost2.body.velocity.y = 0;
+                        ghost2NextX = myX;
+                        ghost2NextY = myY - 1;
+                        ghost2.x = myY * 32;
+                        ghost2.y = myX * 32;
+                    }
+                    else {
+
+                        ghost2.body.velocity.x = -80;
+                        ghost2.body.velocity.y = 0;
+                    }
+                }
+                else {
+
+                    ghost2.body.velocity.x = 0;
+                    ghost2.body.velocity.y = 0;
+                }
+            }
+
+            
+
+            function nextCell(direction, myX, myY) {   
+                if (direction == "up") {
+                    if ((myX - 1) >= 0 && map[myX - 1][myY] == true) {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+                else if (direction == "down") {
+                    if ((myX + 1) < map.length && map[myX + 1][myY] == true) {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+                else if (direction == "left") {
+                    if ((myY - 1) >= 0 && map[myX][myY - 1] == true) {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+                else if (direction == "right") {
+                    if ((myY + 1) < map[0].length && map[myX][myY + 1] == true) {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+                else {
+                    return false;
+                }
             }
 
             //self implemented boolean array
@@ -773,22 +965,68 @@
                 return movementDirection;
             }
 
+            function GBFLR(myX, myY, targetX, targetY) {
+
+                var optimalPathDistance = map.length * map[0].length;
+                var movementDirection = "No";
+
+                if ((myY - 1) >= 0 && map[myX][myY - 1] == true && Math.sqrt(Math.pow((myX - targetX), 2) + Math.pow(((myY - 1) - targetY), 2)) < optimalPathDistance) {
+                    optimalPathDistance = Math.sqrt(Math.pow((myX - targetX), 2) + Math.pow(((myY - 1) - targetY), 2));
+                    movementDirection = "left";
+                }
+
+                if ((myY + 1) < map[0].length && map[myX][myY + 1] == true && Math.sqrt(Math.pow((myX - targetX), 2) + Math.pow(((myY + 1) - targetY), 2)) < optimalPathDistance) {
+                    optimalPathDistance = Math.sqrt(Math.pow((myX - targetX), 2) + Math.pow(((myY + 1) - targetY), 2));
+                    movementDirection = "right";
+                }
+
+                if ((myX - 1) >= 0 && map[myX - 1][myY] == true && Math.sqrt(Math.pow(((myX - 1) - targetX), 2) + Math.pow((myY - targetY), 2)) < optimalPathDistance) {
+                    optimalPathDistance = Math.sqrt(Math.pow(((myX - 1) - targetX), 2) + Math.pow((myY - targetY), 2));
+                    movementDirection = "up";
+                }
+
+                if ((myX + 1) < map.length && map[myX + 1][myY] == true && Math.sqrt(Math.pow(((myX + 1) - targetX), 2) + Math.pow((myY - targetY), 2)) < optimalPathDistance) {
+                    optimalPathDistance = Math.sqrt(Math.pow(((myX + 1) - targetX), 2) + Math.pow((myY - targetY), 2));
+                    movementDirection = "down";
+                }
+
+                
+                return movementDirection;
+            }
+
             //random movement return
             //returns "up", "down", "left", "right", "no"
-            function random(myX, myY) {
-                var value = Math.random() % 4;
-                if (value == 0) {
-                    return "up";
+            function random(lastDirection, myX, myY) {
+
+                var backwards = "";
+                var directions = new Array("up", "down", "left", "right")
+                var newDirections = new Array();
+                var items = 0;
+
+                if (lastDirection == "up") {
+                    backwards = "down";
                 }
-                else if (value == 1) {
-                    return "down";
+                else if(lastDirection == "down"){
+                    backwards = "up";
                 }
-                else if (value == 2) {
-                    return "left";
+                else if (lastDirection == "right") {
+                    backwards = "left";
                 }
-                else {
-                    return "right";
+                else if (lastDirection == "left") {
+                    backwards = "right";
                 }
+                
+
+                for (var i = 0; i < 4; i++) {
+                    if (directions[i] != backwards && nextCell(directions[i], myX, myY)) {
+                        newDirections.push(directions[i]);
+                        items++;
+                    }
+                }
+
+                var random = Math.floor(Math.random() * items);
+                //alert(random);
+                return newDirections[random];
             }
 
             //itterative deepening depth first search
@@ -897,7 +1135,7 @@
                     }
                         //Ghost2
                     else {
-                        var dodo = turds.create(ghost2.x, ghost2.y, 'turd2');
+                        var dodo = turds.create(ghost2.x, ghost2.y, 'turd n2');
                         dodo.body.immovable = true;
 
                     }
