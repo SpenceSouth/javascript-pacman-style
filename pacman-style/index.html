@@ -98,6 +98,11 @@
             ghost1.body.collideWorldBounds = true;
             ghost2.body.collideWorldBounds = true;
 
+            //add listener to ghost0, ghost1, ghost2 that when ghost.x%32 ==0 && ghost.y%32 == 0 call ghost function
+            //((ghost0.x % 32) == 0 && (ghost0.y % 32) == 0)
+            //((ghost1.x % 32) == 0 && (ghost1.y % 32) == 0)
+            //((ghost2.x % 32) == 0 && (ghost2.y % 32) == 0)
+
 
             //  Our two animations, walking left and right.
             /*player.animations.add('left', [0, 1, 2, 3], 10, true);
@@ -519,7 +524,7 @@
             game.physics.arcade.collide(player, ghost1, gameOver, null, this);
             game.physics.arcade.collide(player, ghost2, gameOver, null, this);
             game.physics.arcade.overlap(player, turds, steppedInIt, null, this);
-            game.physics.arcade.collide(ghost0, blocks);
+            //game.physics.arcade.collide(ghost0, blocks);
             game.physics.arcade.collide(ghost1, blocks);
             game.physics.arcade.collide(ghost2, blocks);
 
@@ -620,59 +625,76 @@
             //TODO: Keith- Implement your search algorithms here.
             function ghost0Func(playerX, playerY) {
 
-                var myY = Math.ceil(ghost0.x / 32);
-                var myX = Math.ceil(ghost0.y / 32);
+                var myY = Math.floor((ghost0.x+16) / 32);
+                var myX = Math.floor((ghost0.y+16) / 32);
                 var targetY = Math.floor(playerX / 32);
                 var targetX = Math.floor(playerY / 32);
                 var move = GBF(myX, myY, targetX, targetY);
 
 
-                /*if (loop % 100 == 0)
-                    alert(move + " " + myX + " " + myY);*/
+                //if (loop % 100 == 0)
+                //    alert(move + " (" + myX + "," + myY + ")  (" + ghost0.x + "," + ghost0.y + ")" );
 
-                loop++;
+
+                //loop++;
 
                 if (move == "up") {
-                    if (myX - 1 == ghost0NextX && myY == ghost0NextY) {
+                    if (myX == ghost0NextX && myY == ghost0NextY) {
+                        ghost0.body.velocity.x = 0;
+                        ghost0.body.velocity.y = 0;
+                        ghost0NextX = myX - 1;
+                        ghost0NextY = myY;
+                        ghost0.x = myY*32;
+                        ghost0.y = myX*32;
 
                     }
                     else {
-                        ghost0NextX = myX - 1;
-                        ghost0NextY = myY;
                         ghost0.body.velocity.x = 0;
-                        ghost0.body.velocity.y = -90;
+                        ghost0.body.velocity.y = -80;
                     }
                 }
                 else if (move == "down") {
-                    if (myX + 1 == ghost0NextX && myY == ghost0NextY) {
-
-                    }
-                    else {
+                    if (myX == ghost0NextX && myY == ghost0NextY) {
+                        ghost0.body.velocity.x = 0;
+                        ghost0.body.velocity.y = 0;
                         ghost0NextX = myX + 1;
                         ghost0NextY = myY;
+                        ghost0.x = myY*32;
+                        ghost0.y = myX*32;
+                    }
+                    else {
+                        
                         ghost0.body.velocity.x = 0;
-                        ghost0.body.velocity.y = 90;
+                        ghost0.body.velocity.y = 80;
                     }
                 }
                 else if (move == "right") {
-                    if (myX == ghost0NextX && myY + 1 == ghost0NextY) {
-
-                    }
-                    else {
+                    if (myX == ghost0NextX && myY == ghost0NextY) {
+                        ghost0.body.velocity.x = 0;
+                        ghost0.body.velocity.y = 0;
                         ghost0NextX = myX;
                         ghost0NextY = myY + 1;
-                        ghost0.body.velocity.x = 90;
+                        ghost0.x = myY*32;
+                        ghost0.y = myX*32;
+                    }
+                    else {
+                        
+                        ghost0.body.velocity.x = 80;
                         ghost0.body.velocity.y = 0;
                     }
                 }
                 else if (move == "left") {
-                    if (myX == ghost0NextX && myY - 1 == ghost0NextY) {
-
-                    }
-                    else {
+                    if (myX == ghost0NextX && myY == ghost0NextY) {
+                        ghost0.body.velocity.x = 0;
+                        ghost0.body.velocity.y = 0;
                         ghost0NextX = myX;
                         ghost0NextY = myY - 1;
-                        ghost0.body.velocity.x = -90;
+                        ghost0.x = myY*32;
+                        ghost0.y = myX*32;
+                    }
+                    else {
+                        
+                        ghost0.body.velocity.x = -80;
                         ghost0.body.velocity.y = 0;
                     }
                 }
