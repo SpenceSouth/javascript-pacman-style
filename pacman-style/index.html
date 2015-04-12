@@ -75,7 +75,7 @@
     //        box.scale.setTo(2, 2);
 
             // The player and its settings
-            player = game.add.sprite(32, 32, 'keith');
+            player = game.add.sprite(32*11, 32*13, 'keith');
             player.scale.setTo(.75,.75);
 
             //Add in the hosts
@@ -1143,7 +1143,7 @@
                     }
                         //Ghost2
                     else {
-                        var dodo = turds.create(ghost2.x, ghost2.y, 'turd n2');
+                        var dodo = turds.create(ghost2.x, ghost2.y, 'turd2');
                         dodo.body.immovable = true;
 
                     }
