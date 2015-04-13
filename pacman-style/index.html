@@ -1,6 +1,6 @@
 ﻿<!doctype html>
 <html lang="en">
-<head>
+<head id="headID">
     <meta charset="UTF-8" />
     <title>Oppa Pacman Style "Hey hey hey hey hey"</title>
     <script type="text/javascript" src="phaser.min.js"></script>
@@ -45,6 +45,7 @@
         var stars;
         var score = 0;
         var scoreText;
+        var playerName;
 
         function create() {
 
@@ -606,7 +607,12 @@
 
         //Send to PHP here
         function gameOver(){
-            alert("Game over!");
+            game.destroy();
+            playerName = prompt("Enter Your Name if You Think You Are The Best");
+            while(playerName = null) {
+                playerName = prompt("Enter Your Name if You Think You Are The Best");
+            }
+            window.location.href = 'GameOver.php?score=' + score + '&playerName=' + playerName;
         }
 
             //alert(playerX, " , " + playerY);
