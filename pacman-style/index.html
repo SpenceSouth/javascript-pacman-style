@@ -617,7 +617,7 @@
         function gameOver(){
             game.destroy();
             playerName = prompt("Enter Your Name if You Think You Are The Best");
-            while(playerName = null) {
+            while(playerName == null) {
                 playerName = prompt("Enter Your Name if You Think You Are The Best");
             }
             window.location.href = 'GameOver.php?score=' + score + '&playerName=' + playerName;

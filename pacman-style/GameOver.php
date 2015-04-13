@@ -11,9 +11,8 @@
 <div>
     <?php
 
-    //$playerScore = $_GET['score'];
-    $playerScore = 202;
-    $playerName = 'Marcus';
+    $playerScore = $_GET['score'];
+    $playerName = $_GET['playerName'];
     define('DB_USER', 'n00858385');
     define('DB_PASS', 'cop8385');
     define('DB_DNS', 'mysql:host=139.62.63.234; dbname=n00858385');
@@ -30,8 +29,9 @@
 
         //View results of query
         $results = $stmt->fetchAll();
-        //echo $results[4]['SCORE'];
-        if($playerScore >= intval($results[4]['SCORE'])){
+        $size = $conn->query("SELECT * FROM pacman ORDER BY Score DESC ")->fetchColumn();
+        $size = $size - 1;
+        if($playerScore >= $results[$size]['SCORE']){
 
             $stmt = $conn->prepare("DELETE FROM pacman WHERE name=:playerName");
             $stmt->bindParam(':playerName', $results[4]['NAME']);
