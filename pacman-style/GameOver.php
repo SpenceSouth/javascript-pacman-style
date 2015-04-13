@@ -30,8 +30,9 @@
         //View results of query
         $results = $stmt->fetchAll();
         $size = $conn->query("SELECT * FROM pacman ORDER BY Score DESC ")->fetchColumn();
-        $size = $size - 1;
-        if($playerScore >= $results[$size]['SCORE']){
+
+        $count = $size - 1;
+        if($playerScore >= $results[4]['SCORE']){
 
             $stmt = $conn->prepare("DELETE FROM pacman WHERE name=:playerName");
             $stmt->bindParam(':playerName', $results[4]['NAME']);
