@@ -7,7 +7,7 @@ h1{
     color: yellow;
     text-align: center;
     border-style: dashed;
-    margin: 2.5% 20%;
+    margin: 5% 10% 5% 10%;
 }
 
 h2{
@@ -15,6 +15,35 @@ h2{
     text-align: center;
     margin: 2.5% 20%;
 }
+
+h3{
+    margin: 2.5% 20%;
+}
+
+table{
+    font-size: x-large;
+    margin: 5% 30% 30% 43%;
+    border: 1px solid #1AD96D;
+
+}
+
+tr{
+    padding: inherit;
+}
+td{
+    border: 1px solid #1AD96D;
+    font-size: xx-large;
+    padding: inherit;
+    font-weight: bold;
+    padding: 25px;
+    color: wheat;
+}
+th{
+    border: 1px solid #1AD96D;
+    font-style: oblique;
+    background-color: beige;
+}
+
 
 #link{
     list-style: none;
@@ -73,3 +102,5 @@ a.returnButton {
     text-decoration: none;
     alignment: center;
 }
+
+
