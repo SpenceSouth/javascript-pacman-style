@@ -1,15 +1,15 @@
+
 <?php
-$servername = "139.62.63.234";
-$username = "n00858385";
-$password = "cop8385";
+define('DB_USER', 'root');
+define('DB_PASS', 'pekka');
+define('DB_DNS', 'mysql:host=104.131.127.30;dbname=pacman');
 
-echo "<p>Inside php File</p>";
-
-	$conn =mysql_connect($servername, $username, $password);
-
-	//Check Connection
-    if (!$conn) {
-        die("Connection failed:" . mysqli_connect_error());
-    }
-    echo "<p>Connected successfully</p>";
+echo "Inside Scores";
+try {
+    $connection = new PDO(DB_DNS, DB_USER, DB_PASS);
+    echo "Connection Successful";
+} catch (PDOException $e) {
+    print "Connection Failed " . $e->getMessage() . "<br/>";
+    die();
+}
 ?>
