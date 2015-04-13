@@ -75,7 +75,7 @@
     //        box.scale.setTo(2, 2);
 
             // The player and its settings
-            player = game.add.sprite(32*11, 32*13, 'keith');
+            player = game.add.sprite(32*11, 32*2, 'keith');
             player.scale.setTo(.75,.75);
 
             //Add in the hosts
@@ -217,8 +217,6 @@
             placeBox(11, 20);
             placeBox(12, 8);
             placeBox(12, 9);
-            placeBox(12, 10);
-            placeBox(12, 11);
             placeBox(12, 12);
             placeBox(12, 13);
             placeBox(13, 2);
@@ -435,7 +433,7 @@
                     }
                     else {
                         ghost0.body.velocity.x = 0;
-                        ghost0.body.velocity.y = -80;
+                        ghost0.body.velocity.y = -50;
                     }
                 }
                 else if (move == "down") {
@@ -450,7 +448,7 @@
                     else {
                         
                         ghost0.body.velocity.x = 0;
-                        ghost0.body.velocity.y = 80;
+                        ghost0.body.velocity.y = 50;
                     }
                 }
                 else if (move == "right") {
@@ -464,7 +462,7 @@
                     }
                     else {
                         
-                        ghost0.body.velocity.x = 80;
+                        ghost0.body.velocity.x = 50;
                         ghost0.body.velocity.y = 0;
                     }
                 }
@@ -479,7 +477,7 @@
                     }
                     else {
                         
-                        ghost0.body.velocity.x = -80;
+                        ghost0.body.velocity.x = -50;
                         ghost0.body.velocity.y = 0;
                     }
                 }
@@ -717,7 +715,7 @@
                     [false, true,  false, false, false, true,  false, true,  false, false, true,  true,  false, false, true,  false, true,  false, false, false, true,  false],//9
                     [false, true,  true,  true,  true,  true,  true,  true,  false, true,  true,  true,  true,  false, true,  true,  true,  true,  true,  true,  true,  false],//10
                     [false, false, false, true,  false, false, false, true,  false, true,  true,  true,  true,  false, true,  false, false, false, true,  false, false, false],//11
-                    [false, true,  true,  true,  true,  true,  true,  true,  false, false, false, false, false, false, true,  true,  true,  true,  true,  true,  true,  false],//12
+                    [false, true,  true,  true,  true,  true,  true,  true,  false, false, true,  true,  false, false, true,  true,  true,  true,  true,  true,  true,  false],//12
                     [false, true,  false, false, false, false, false, true,  true,  true,  true,  true,  true,  true,  true,  false, false, false, false, false, true,  false],//13
                     [false, true,  true,  true,  true,  true,  true,  true,  false, true,  false, false, true,  false, true,  true,  true,  true,  true,  true,  true,  false],//14
                     [false, true,  false, true,  false, false, false, true,  false, true,  true,  true,  true,  false, true,  false, false, false, true,  false, true,  false],//15
