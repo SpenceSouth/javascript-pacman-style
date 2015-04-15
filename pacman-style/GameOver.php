@@ -93,7 +93,7 @@
 <div>
     <ul id="link">
         <li id="linkListItem">
-            <a href="startScreen.html" class="returnButton"><span class="round">Main Menu</span></a>
+            <a href="index.html" class="returnButton"><span class="round">Main Menu</span></a>
         </li>
     </ul>
 </div>
