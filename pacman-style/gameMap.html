@@ -1062,16 +1062,9 @@
             }
 
             function selectTurd(){
-                var random = Math.random() * (10 - 1) + 1;
-
+                var random = Math.random() * (8 - 1) + 1;
                 var value = Math.floor(random) - 1;
-
-                if(value < 8 && value > -1){
-                    return "turd" + value;
-                }
-                else{
-                    return "turd0";
-                }
+                return "turd" + value;
 
             }
 
