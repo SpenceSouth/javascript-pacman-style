@@ -18,7 +18,15 @@
 
             startButton.addEventListener("click", function () {
 
-                document.getElementById("homeList").innerHTML = "<p id='selectPlayer'>Who would you like to play as?<ul id='pics'><li><a href='#' id='keith'><img src='gamePictures/KeithEdited.png' alt='keith'></a></li><li><a href='#' id='megan'><img src='gamePictures/meganEdited.png' alt='megan'></a></li><li><a href='#' id='spence'><img src='gamePictures/spenceEdited.png' alt='spence'></a></li><li><a href='#' id='brittany'><img src='gamePictures/brittanyv1.png' alt='brit'></a></li><li><a href='#' id='marcus'><img src='gamePictures/marcusEdited.png' alt='marcus'></a></li></p>";
+                document.getElementById("homeList").innerHTML = "<p id='selectPlayer'>" +
+                "Who would you like to play as?" +
+                "<ul id='pics'>" +
+                "<li><a href='gameMap.html?id=keith' id='keith'><img src='gamePictures/KeithEdited.png' alt='keith'></a>" +
+                "</li><li><a href='gameMap.html?id=megan' id='megan'><img src='gamePictures/meganEdited.png' alt='megan'></a></li>" +
+                "<li><a href='gameMap.html?id=spence' id='spence'><img src='gamePictures/spenceEdited.png' alt='spence'></a></li>" +
+                "<li><a href='gameMap.html?id=brittany' id='brittany'><img src='gamePictures/brittanyv1.png' alt='brit'></a></li>" +
+                "<li><a href='gameMap.html?id=marcus' id='marcus'><img src='gamePictures/marcusEdited.png' alt='marcus'></a></li>" +
+                "</p>";
 
             });
         }
