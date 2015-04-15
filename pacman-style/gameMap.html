@@ -56,6 +56,11 @@
             game.load.image('turd0', 'assets/neonGreen.png');
             game.load.image('turd1', 'assets/blue.png');
             game.load.image('turd2', 'assets/green.png');
+            game.load.image('turd3', 'assets/neonblue.png');
+            game.load.image('turd4', 'assets/pink.png');
+            game.load.image('turd5', 'assets/purple.png');
+            game.load.image('turd6', 'assets/red.png');
+            game.load.image('turd7', 'assets/yellow.png');
 
         }
 
@@ -1028,24 +1033,32 @@
 
                     //Ghost0
                     if (choice < 100) {
-                        var dodo = turds.create(ghost0.x, ghost0.y, 'turd0');
+                        var dodo = turds.create(ghost0.x, ghost0.y, selectTurd());
                         dodo.body.immovable = true;
                     }
                         //Ghost1
                     else if (choice < 200) {
-                        var dodo = turds.create(ghost1.x, ghost1.y, 'turd1');
+                        var dodo = turds.create(ghost1.x, ghost1.y, selectTurd());
                         dodo.body.immovable = true;
 
                     }
                         //Ghost2
                     else {
-                        var dodo = turds.create(ghost2.x, ghost2.y, 'turd2');
+                        var dodo = turds.create(ghost2.x, ghost2.y, selectTurd());
                         dodo.body.immovable = true;
 
                     }
 
                 }
 
+            }
+
+            function selectTurd(){
+                var random = Math.random() * (10 - 1) + 1;
+
+                var value = Math.floor(random) - 1;
+
+                return "turd" + value;
             }
 
             function steppedInIt(player, dodo) {
