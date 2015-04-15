@@ -1062,7 +1062,13 @@
 
                 var value = Math.floor(random) - 1;
 
-                return "turd" + value;
+                if(value > 8 && value > -1){
+                    return "turd" + value;
+                }
+                else{
+                    return "turd0";
+                }
+
             }
 
             function steppedInIt(player, dodo) {
