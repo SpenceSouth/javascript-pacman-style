@@ -3,7 +3,11 @@
 <head id="headID">
     <meta charset="UTF-8" />
     <title>Oppa Pacman Style "Hey hey hey hey hey"</title>
+
+
     <script type="text/javascript" src="phaser.min.js"></script>
+
+
     <style type="text/css">
         body {
             margin: 0;
@@ -1062,7 +1066,7 @@
 
                 var value = Math.floor(random) - 1;
 
-                if(value > 8 && value > -1){
+                if(value < 8 && value > -1){
                     return "turd" + value;
                 }
                 else{
