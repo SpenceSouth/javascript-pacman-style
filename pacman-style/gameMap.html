@@ -43,7 +43,9 @@
         }
         //alert(playerID);
 
-        var game = new Phaser.Game(704, 704, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+        var game = new Phaser.Game(704, 704, Phaser.AUTO, '', {
+            preload: preload, create: create, update: update
+        });
 
         function preload() {
 
